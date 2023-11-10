@@ -6,7 +6,9 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import { createTheme, alpha, getContrastRatio, ThemeProvider } from '@mui/material/styles';
 import { Input } from '@mui/material';
-import './navStyle.css'; // Import your CSS file
+import { Link } from "react-router-dom";
+import './navStyle.css';
+
 
 const goldBase = '#FFD700';
 const goldMain = alpha(goldBase, 0.7);
@@ -28,11 +30,11 @@ const ButtonAppBar = () => {
       <Box sx={{ flexGrow: 1, margin: 0, padding: 0 }}>
         <AppBar position="static" className="appBar" style={{marginTop:'-0.5%', backgroundColor:'gold'}}>
           <Toolbar className="toolbar" style={{marginTop:'0%', paddingLeft:'5%', paddingRight:'3%'}}>
-            <button id="btnHome" className="buttonStyle">Home</button>
-            <button id="btnAbout" className="buttonStyle">About Us</button>
-            <button id="btnClinic" className="buttonStyle">Clinical Services</button>
-            <button id="btnAppointment" className="buttonStyle">Appointments</button>
-            <button id="btnContact" className="buttonStyle">Contact Us</button>
+            <Link to="/"><button id="btnHome" className="buttonStyle">Home</button></Link>
+            <Link to="/about"><button id="btnAbout" className="buttonStyle">About Us</button></Link>
+            <Link to="/services"><button id="btnClinic" className="buttonStyle">Clinical Services</button></Link>
+            <Link to="/appointments"><button id="btnAppointment" className="buttonStyle">Appointments</button></Link>
+            <Link to="/contact"><button id="btnContact" className="buttonStyle">Contact Us</button></Link>
             <span style={{ marginLeft: 'auto' }}>
               <Input
                 id="headerSearch"
