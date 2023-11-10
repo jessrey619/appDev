@@ -1,0 +1,104 @@
+
+/* FOR THE PICTURE */
+.bodyImage {
+  height: 359px;
+  width: 1604px;
+}
+
+.bodyImage .photo-for-shit-here {
+  background-color: #000000;
+  height: 359px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 1604px;
+}
+
+
+/* for The Nav */
+.bodyNav {
+  height: 80px;
+  position: relative;
+  width: 1920px;
+}
+
+.bodyNav .body-nav {
+  background-color: #853339;
+  height: 80px;
+  left: 0;
+  margin-top: 30px;
+  top: 0;
+  width: 1920px;
+}
+
+.bodyNav .btn-services {
+  height: 50px;
+  left: 216px;
+  position: absolute;
+  top: 14px;
+  width: 179px;
+}
+
+.bodyNav .overlap-group {
+  background-color: #521b1f;
+  height: 50px;
+  position: relative;
+  width: 177px;
+}
+
+.bodyNav .text-wrapper {
+  color: #ffffff;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  height: 24px;
+  left: 8px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 13px;
+  width: 161px;
+}
+
+.bodyNav .overlap-wrapper {
+  height: 50px;
+  left: 478px;
+  position: absolute;
+  top: 14px;
+  width: 179px;
+}
+
+.bodyNav .overlap-group-wrapper {
+  height: 50px;
+  left: 740px;
+  position: absolute;
+  top: 14px;
+  width: 179px;
+}
+
+.bodyNav .div-wrapper {
+  height: 50px;
+  left: 1002px;
+  position: absolute;
+  top: 14px;
+  width: 179px;
+}
+
+.bodyNav .div {
+  height: 50px;
+  left: 1264px;
+  position: absolute;
+  top: 14px;
+  width: 179px;
+}
+
+.bodyNav .btn-services-2 {
+  height: 50px;
+  left: 1526px;
+  position: absolute;
+  top: 14px;
+  width: 179px;
+}
+
+
