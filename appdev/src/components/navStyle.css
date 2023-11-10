@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+.linkStyle {
+  text-decoration: none;
+  color: inherit;
+}
+
 .toolbar {
   margin: 0;
   padding: 0;

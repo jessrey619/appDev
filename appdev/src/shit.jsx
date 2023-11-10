@@ -1,4 +1,4 @@
-export default function theShit(){
+export default function TheShit(){
     return(
 
         <>
