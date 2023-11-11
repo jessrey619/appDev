@@ -1,5 +1,5 @@
 .appBar {
-  background-color: gold;
+  background-color: rgb(147, 135, 68);
   border: 0;
   height: 1%;
   padding: 0;
@@ -18,12 +18,13 @@
 .buttonStyle {
   border: 2px solid black;
   margin-left: 2%; /* Use percentage for margin */
-  padding: 5px 8px 5px 8px; /* Adjust padding as needed */
+  padding: 0px 0px 0px 0px; /* Adjust padding as needed */
   margin-right: 1%;
   min-width: 130px;
   border-radius: 20px;
-  font-size: 12px;
-  background-color: yellow;
+  font-size: 15px;
+  background-color: rgb(190, 162, 44);
+  margin-right: 40px;
   color: black;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -31,8 +32,7 @@
 .buttonStyle:hover,
 .buttonStyle:active,
 .buttonStyle:focus {
-  background-color: #91760b;
-  color: white;
+  background-color: rgb(254, 216, 57);
 }
 
 .buttonStyle:first-child {

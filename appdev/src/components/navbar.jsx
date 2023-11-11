@@ -28,7 +28,7 @@ const ButtonAppBar = () => {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1, margin: 0, padding: 0 }}>
-        <AppBar position="static" className="appBar" style={{marginTop:'-0.5%', backgroundColor:'gold'}}>
+        <AppBar position="static" className="appBar" style={{marginTop:'-5px', height:'60px' ,backgroundColor:'rgb(223, 190, 57)', border: '1px solid #000', borderTop: '2px solid #000'}}>
           <Toolbar className="toolbar" style={{marginTop:'0%', paddingLeft:'5%', paddingRight:'3%'}}>
             <Link to="/"><button id="btnHome" className="buttonStyle">Home</button></Link>
             <Link to="/about"><button id="btnAbout" className="buttonStyle">About Us</button></Link>
@@ -39,7 +39,7 @@ const ButtonAppBar = () => {
               <Input
                 id="headerSearch"
                 placeholder='Search'
-                sx={{ bgcolor: 'white', paddingLeft: '10px' }} />
+                sx={{ bgcolor: 'white', paddingLeft: '10px',  }} />
             </span>
           </Toolbar>
         </AppBar>
