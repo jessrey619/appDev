@@ -1,0 +1,92 @@
+
+
+.appBookBg {
+    display: flex; /* Use flex container */
+    height: 590px;
+}
+
+.sideNav {
+    width: 20%;
+    background-color: rgb(223, 190, 57);
+    text-align: center;
+    border-right: 1px solid;
+}
+
+.sideNavButtons{
+    margin-top: 60%;
+}
+
+.mainBody {
+    flex: 1; /* Take up remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-image: url('C:\Users\jessr\Documents\GitHub\appDev\appdev\public\appointmentBg.png');;
+}
+
+.outsideOuterSquare{
+    margin-top: 30px;
+    width: 40%;
+}
+
+.appBookOutSquare {
+    padding: 20px;
+    background-color: rgb(252, 242, 193);
+    width: 96%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px 0px;
+}
+
+.appBookInSquare{
+    background-color: rgb(252, 246, 218);
+    padding: 10px;
+}
+
+.inputArea{
+    background-color: white;
+    
+}
+
+.inputContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+    padding: 10px;
+}
+
+.inputField{
+    flex: 0 0 30%; /* Each takes half of the container width */
+    font-weight: bold;
+}
+.inputData{
+    flex: 0 0 60%; /* Each takes half of the container width */
+}
+
+.inputField {
+    text-align: left;
+    padding: 0px;
+}
+
+.inputData {
+    padding-left: 10px; /* Adjust as needed for spacing */
+    text-align: left;
+}
+
+.inputArea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btnForms{
+    width: 25px;
+}
+
+.btnBack,
+.btnClear,
+.btnNext{
+    background-color: rgb(223, 190, 57);
+    border-radius: 10px;
+    margin: 0px 20px 0px 20px;
+}
+
