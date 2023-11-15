@@ -1,5 +1,6 @@
 import { Button } from '@mui/material'
 import '../css/appBooking.css'
+import axios from 'axios';
 import { Link } from 'react-router-dom'
 import TimePickerValue from '../components/Timepicker'
 import DatePickerValue from '../components/DatePicker'
@@ -26,9 +27,9 @@ export const AppBooking = () => {
     }
 
     useEffect(() => {
-        console.log(date);
-        console.log(time);
-        console.log(service);
+        // console.log(date);
+        // console.log(time);
+        // console.log(service);
     }, [service,date,time]);
 
     const inactiveButton = {
@@ -47,6 +48,17 @@ export const AppBooking = () => {
         border: 'solid 1px',
         minWidth: '200px'
     }
+
+    const submitBooking = async () => {
+        await axios.post("http://localhost:8080/appointment/insertAppointment", {
+            date: date,
+            time: time,
+            pid: 1,
+            sid: 1,
+            status: false
+        })
+    }
+    
 
     return(
         
@@ -109,7 +121,9 @@ export const AppBooking = () => {
                             <br/>
 
                             {/* TODO: Add Tol */}
-                            <Button style={{color:'black', backgroundColor:'rgb(223, 190, 57)', width:'100px', boxShadow:'2px 2px 2px 0px'}}>Submit</Button>
+                            <Button style={{color:'black', backgroundColor:'rgb(223, 190, 57)', width:'100px', boxShadow:'2px 2px 2px 0px'}}
+                            onClick={submitBooking
+                            }>Submit</Button>
                             <br/><br/>
                             {/* <Link to={"/"}><button className='btnBack'><img className='btnForms' src='../btnBack.png' alt='btnBack'/></button></Link>
                             <Link to={"/appointments/booking"}><button className='btnClear'><img className='btnForms' src='../btnClear.png' alt='btnClear'/></button></Link>
