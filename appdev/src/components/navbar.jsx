@@ -8,6 +8,7 @@ import { createTheme, alpha, getContrastRatio, ThemeProvider } from '@mui/materi
 import { Input } from '@mui/material';
 import { Link } from "react-router-dom";
 import './navStyle.css';
+import MenuListComposition from './ProfileDropDown';
 
 
 const goldBase = '#FFD700';
@@ -36,10 +37,12 @@ const ButtonAppBar = () => {
             <Link to="/appointments"><button id="btnAppointment" className="buttonStyle">Appointments</button></Link>
             <Link to="/contact"><button id="btnContact" className="buttonStyle">Contact Us</button></Link>
             <span style={{ marginLeft: 'auto' }}>
-              <Input
+              <MenuListComposition/>
+              {/* <Input
                 id="headerSearch"
                 placeholder='Search'
                 sx={{ bgcolor: 'white', paddingLeft: '10px',  }} />
+                 */}
             </span>
           </Toolbar>
         </AppBar>

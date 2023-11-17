@@ -1,0 +1,80 @@
+body{
+    background-color: rgb(255, 237, 149);
+}
+
+.labDiagBg {
+    display: flex;
+}
+
+.rightSide {
+    flex: 1; /* Take up the remaining space */
+    margin-left: 60px;
+}
+.leftSide {
+    width: 45%; /* Set the width to cover the left side */
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column; /* Arrange the content in a column */
+    margin-top: 50px;
+
+}
+
+.pair {
+    display: flex;
+    align-items: center; /* Center the content vertically */
+    margin-bottom: 30px;
+}
+
+.number {
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+
+.half {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Center the content vertically */
+}
+
+.number {
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.numContent {
+    flex: 1; /* Take up the remaining space */
+}
+
+.numContentHeading{
+    text-align: right;
+    margin: 2px;
+}
+
+.numContentContent{
+    width: 100%;
+    text-align: justify;
+    font-size: 15px;
+}
+.labDiagOuterSquare{
+    background-color: rgb(252, 242, 193);
+    height: 600px;
+    border-radius: 40px;
+    width: 92%;
+    padding: 30px;
+    text-align: center;
+}
+
+.labDiagInnerSquare{
+    background-color: rgb(252, 246, 218);
+    height: 550px;
+    border-radius: 30px;
+    padding: 30px   ;
+}
+
+.labDiagImg{
+    width: 80%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}

@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom';
 import '../css/clinicServices.css'
 import {Grid} from '@mui/material';
 
 export const PageServices = () =>{
 
+
+    
     return(
         <div className="pageServicesBody">
             <h1 className="ourServices">
@@ -15,32 +18,44 @@ export const PageServices = () =>{
             <div className='outerRectangle' >
                 <Grid className='innerRectangle' container>
                     <Grid className='btnContainers'item xs={4}>
-                        <button className='btnService'><img className='logoService' src='../medLogo1.png' alt='MedServButton'/></button>
+                        <Link to="/appointments">
+                            <button className='btnService'><img className='logoService' src='../medLogo1.png' alt='MedServButton'/></button>
+                        </Link>
                     </Grid>
                     <Grid className='btnContainers' item xs={4}>
-                        <button className='btnService'><img className='logoService' src='../medLogo2.png' alt='MedServButton'/></button>
+                        <Link to="/appointments">
+                            <button className='btnService'><img className='logoService' src='../medLogo3.png' alt='MedServButton'/></button>
+                        </Link>
                     </Grid>
                     <Grid className='btnContainers' item xs={4}>
-                        <button className='btnService'><img className='logoService' src='../medLogo3.png' alt='MedServButton'/></button>
+                        <Link to="/services/laboratory-and-diagnostics">
+                            <button className='btnService'><img className='logoService' src='../medLogo2.png' alt='MedServButton'/></button>
+                        </Link>
                     </Grid>
+                    
                     
                         <Grid className='txtButton' item xs={4}>
                                 <span>Primary and Specialty<br/> Consultation</span>
                         </Grid>
                         <Grid className='txtButton' item xs={4}>
-                                <span>Laboratory and <br/>Diagnostics</span>
-                        </Grid>
-                        <Grid className='txtButton' item xs={4}>
                                 <span>Online Consultation</span>
                         </Grid>
+                        <Grid className='txtButton' item xs={4}>
+                                <span>Laboratory and <br/>Diagnostics</span>
+                        </Grid>
+                        
 
                         {/* bottom half */}
-                    <Grid container xs={12}>
+                    <Grid container>
                         <Grid className='btnContainers' item xs={6} style={{paddingLeft:'18%', maxHeight:'100px'}}>
-                            <button className='btnService'><img className='logoService' src='../medLogo4.png' alt='MedServButton'/></button>
+                            <Link to="/appointments">
+                                <button className='btnService'><img className='logoService' src='../medLogo4.png' alt='MedServButton'/></button>
+                            </Link>
                         </Grid>
                         <Grid className='btnContainers' item xs={6} style={{paddingRight:'18%'}}>
-                            <button className='btnService'><img className='logoService' src='../medLogo5.png' alt='MedServButton'/></button>
+                            <Link to="/appointments">
+                                <button className='btnService'><img className='logoService' src='../medLogo5.png' alt='MedServButton'/></button>
+                            </Link>
                         </Grid>
                         <Grid className='txtButton' item xs={6} style={{paddingLeft:'18%'}}>
                                 <span>Medical Services</span>
