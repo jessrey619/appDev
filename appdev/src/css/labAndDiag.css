@@ -59,22 +59,27 @@ body{
 }
 .labDiagOuterSquare{
     background-color: rgb(252, 242, 193);
-    height: 600px;
+    height: 550px;
     border-radius: 40px;
     width: 92%;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
 }
 
 .labDiagInnerSquare{
     background-color: rgb(252, 246, 218);
-    height: 550px;
+    height: 500px;
     border-radius: 30px;
     padding: 30px   ;
 }
 
 .labDiagImg{
     width: 80%;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-bottom: 20px;
+}
+
+.labDiagImg2{
+    width: 80%;
+    border-radius: 30px;
 }

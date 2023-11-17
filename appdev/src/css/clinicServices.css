@@ -4,9 +4,12 @@
     align-items: center;
     flex-direction: column;
   }
+
+  body{
+    background-color: rgb(255, 237, 149);
+  }
   
   .pageServicesBody {
-    background-color: rgb(255, 237, 149);
     padding-bottom: 5%;
   }
   

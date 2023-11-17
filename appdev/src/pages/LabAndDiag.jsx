@@ -1,7 +1,9 @@
 import { Button } from '@mui/material'
 import '../css/labAndDiag.css'
+import { Link } from 'react-router-dom'
 
 export const LabAndDiag = () => {
+
 
     return(
         <div className='theRealBG'>
@@ -52,7 +54,10 @@ export const LabAndDiag = () => {
                             </div>
                         </div>
                     </div>
-                    <Button style={{backgroundColor:'rgb(250,211,3)', boxShadow:'2px 2px 2px 2px rgb(137, 52, 59)', color: 'black'}}>Book an Appointment</Button>
+                    <Link to="/appointments">
+                    <Button style={{backgroundColor:'rgb(250,211,3)', boxShadow:'2px 2px 2px 2px rgb(137, 52, 59)', color: 'black'}}
+                    >Book an Appointment</Button>
+                    </Link>
                 </div>
 
 
@@ -63,7 +68,7 @@ export const LabAndDiag = () => {
                             <div className='labDiagPhotos'>
                                 <img className='labDiagImg' src='../photoSample.png' alt='photo'></img>
                                 <img className='labDiagImg' src='../photoSample.png' alt='photo'></img>
-                                <img className='labDiagImg' src='../photoSample.png' alt='photo'></img>
+                                <img className='labDiagImg2' src='../photoSample.png' alt='photo'></img>
                             </div>
 
                         </div>
