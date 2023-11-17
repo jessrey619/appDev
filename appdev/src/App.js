@@ -5,6 +5,7 @@ import TheHeader from './components/header';
 import { PageServices } from './pages/ClinicServices';
 import { TheAppointment } from './pages/Appointment';
 import { AppBooking } from './pages/AppBooking';
+import { LabAndDiag } from './pages/LabAndDiag';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         {/* <Route index element={ISUD ANG <CONTACT/> na page ari}/> */}
 
         <Route index element={<AppBooking/>} path='/appointments/booking'/>
+        <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
       </Routes>
       
     </>

@@ -24,24 +24,26 @@ export const PageServices = () =>{
                     </Grid>
                     <Grid className='btnContainers' item xs={4}>
                         <Link to="/appointments">
-                            <button className='btnService'><img className='logoService' src='../medLogo2.png' alt='MedServButton'/></button>
-                        </Link>
-                    </Grid>
-                    <Grid className='btnContainers' item xs={4}>
-                        <Link to="/appointments">
                             <button className='btnService'><img className='logoService' src='../medLogo3.png' alt='MedServButton'/></button>
                         </Link>
                     </Grid>
+                    <Grid className='btnContainers' item xs={4}>
+                        <Link to="/services/laboratory-and-diagnostics">
+                            <button className='btnService'><img className='logoService' src='../medLogo2.png' alt='MedServButton'/></button>
+                        </Link>
+                    </Grid>
+                    
                     
                         <Grid className='txtButton' item xs={4}>
                                 <span>Primary and Specialty<br/> Consultation</span>
                         </Grid>
                         <Grid className='txtButton' item xs={4}>
-                                <span>Laboratory and <br/>Diagnostics</span>
-                        </Grid>
-                        <Grid className='txtButton' item xs={4}>
                                 <span>Online Consultation</span>
                         </Grid>
+                        <Grid className='txtButton' item xs={4}>
+                                <span>Laboratory and <br/>Diagnostics</span>
+                        </Grid>
+                        
 
                         {/* bottom half */}
                     <Grid container>

@@ -1,4 +1,6 @@
-
+.theRealBG{
+    padding-left: 40px;
+}
 
 .appBookBg {
     display: flex; /* Use flex container */
