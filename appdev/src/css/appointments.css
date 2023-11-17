@@ -3,8 +3,11 @@
         display: flex;
         justify-content: center; /* Align children horizontally to the center */
         align-items: center; /* Align children vertically to the center */
-        background-color: rgb(255, 237, 149);
     }
+    body{
+        background-color: rgb(255, 237, 149);
+      }
+      
 
     .outerSquare {
         width: 30%;

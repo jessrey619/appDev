@@ -29,6 +29,13 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
+.buttonStyle.active {
+  /* Styles for the active state (when on the "/" route) */
+  background-color: rgb(254, 216, 57);
+  color: black;
+  /* Add any other styles you need for the active state */
+}
+
 .buttonStyle:hover,
 .buttonStyle:active,
 .buttonStyle:focus {

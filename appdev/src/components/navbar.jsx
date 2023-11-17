@@ -1,15 +1,13 @@
-// ButtonAppBar.jsx
 
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import { createTheme, alpha, getContrastRatio, ThemeProvider } from '@mui/material/styles';
 import { Input } from '@mui/material';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import './navStyle.css';
 import MenuListComposition from './ProfileDropDown';
-
 
 const goldBase = '#FFD700';
 const goldMain = alpha(goldBase, 0.7);
@@ -26,23 +24,25 @@ const theme = createTheme({
 });
 
 const ButtonAppBar = () => {
+  const location = useLocation();
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1, margin: 0, padding: 0 }}>
-        <AppBar position="static" className="appBar" style={{marginTop:'-5px', height:'60px' ,backgroundColor:'rgb(223, 190, 57)', border: '1px solid #000', borderTop: '2px solid #000'}}>
-          <Toolbar className="toolbar" style={{marginTop:'0%', paddingLeft:'5%', paddingRight:'3%'}}>
-            <Link to="/"><button id="btnHome" className="buttonStyle">Home</button></Link>
-            <Link to="/about"><button id="btnAbout" className="buttonStyle">About Us</button></Link>
-            <Link to="/services"><button id="btnClinic" className="buttonStyle">Clinical Services</button></Link>
-            <Link to="/appointments"><button id="btnAppointment" className="buttonStyle">Appointments</button></Link>
-            <Link to="/contact"><button id="btnContact" className="buttonStyle">Contact Us</button></Link>
+        <AppBar position="static" className="appBar" style={{ marginTop: '-5px', height: '60px', backgroundColor: 'rgb(223, 190, 57)', border: '1px solid #000', borderTop: '2px solid #000' }}>
+          <Toolbar className="toolbar" style={{ marginTop: '0%', paddingLeft: '5%', paddingRight: '3%' }}>
+            <Link to="/"><button id="btnHome" className={`buttonStyle ${location.pathname === '/' ? 'active' : ''}`}>Home</button></Link>
+            <Link to="/about"><button id="btnAbout" className={`buttonStyle ${location.pathname === '/about' ? 'active' : ''}`}>About Us</button></Link>
+            <Link to="/services"><button id="btnClinic" className={`buttonStyle ${location.pathname === '/services' ? 'active' : ''}`}>Clinical Services</button></Link>
+            <Link to="/appointments"><button id="btnAppointment" className={`buttonStyle ${location.pathname === '/appointments' ? 'active' : ''}`}>Appointments</button></Link>
+            <Link to="/contact"><button id="btnContact" className={`buttonStyle ${location.pathname === '/contact'? 'active' : ''}`}>Contact Us</button></Link>
             <span style={{ marginLeft: 'auto' }}>
-              <MenuListComposition/>
+              <MenuListComposition />
               {/* <Input
                 id="headerSearch"
                 placeholder='Search'
                 sx={{ bgcolor: 'white', paddingLeft: '10px',  }} />
-                 */}
+              */}
             </span>
           </Toolbar>
         </AppBar>
