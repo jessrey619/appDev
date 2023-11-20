@@ -1,0 +1,82 @@
+.pageAboutUsBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .pageAboutUsBody {
+    background-color: rgb(255, 237, 149);
+    padding-bottom: 15%;
+  }
+  
+  .outer {
+    background-color: rgb(252, 242, 193);
+    width: 90%;
+    height: 70vh;
+    padding: 2%;
+    border-radius: 50px;
+  }
+  
+  .inner {
+    background-color: rgb(252, 246, 218);
+    padding: 3%;
+    width: 48%;
+    height: 70vh;
+    border-radius: 30px;
+    align-items: left;
+  }
+  .rightspace{
+    padding: 3%;
+    width: 47%;
+    border-radius: 30px;
+  }
+  .pageImage {
+    width: 100%;
+    height: auto;
+    transform: translateY(-4%);
+    align-items: center;
+  }
+  
+  .titleAboutus{
+    margin-top: 50px;
+  }
+  .titleInner{
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .txtBox {
+    text-align: justify;
+    font-size: 16px;
+    align-items: center;
+    transform: translateY(-25%);
+  }
+  .bottomBox{
+    background-color: rgb(252, 242, 193);
+    align-items: center;
+    transform: translateY(20%);
+    height: 35vh;
+    width: 90%;
+    padding: 2%;
+    border-radius: 20px;
+  }
+  .teamDesc{
+    text-align: center;
+    font-style: italic;
+    margin-top: 80px;
+  }
+  .teamName{
+    text-align: center;
+    justify-content: center;
+    margin-left: 40px;
+    margin-top: 80px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .person{
+    text-align: justify;
+    font-size: 16px;
+    align-items: center;
+    transform: translateY(35%);
+  }

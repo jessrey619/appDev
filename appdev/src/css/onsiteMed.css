@@ -2,12 +2,12 @@ body{
     background-color: rgb(255, 237, 149);
 }
 
-.labDiagBg {
+.onsiteBG {
     display: flex;
 }
 
 .rightSide {
-    flex: 1; /* Take up the remaining space */
+     flex: 1; /* Take up the remaining space */
     margin-left: 60px;
 }
 .leftSide {
@@ -47,17 +47,20 @@ body{
     flex: 1; /* Take up the remaining space */
 }
 
-.numContentHeading{
+.contentTitle{
     text-align: right;
     margin: 2px;
 }
 
-.numContentContent{
-    width: 100%;
+.description{
+    width: 95%;
+    margin-left: 20px;
+    margin-top: 10px;
     text-align: justify;
-    font-size: 15px;
+    font-style: italic;
+    font-size: 17px;
 }
-.labDiagOuterSquare{
+.darkSquare{
     background-color: rgb(252, 242, 193);
     height: 600px;
     margin-top: 30px;
@@ -67,15 +70,15 @@ body{
     text-align: center;
 }
 
-.labDiagInnerSquare{
+.lightSquare{
     background-color: rgb(252, 246, 218);
     height: 550px;
     border-radius: 30px;
-    padding: 30px   ;
+    padding: 30px;
 }
 
-.labDiagImg{
+.onsiteImg{
     width: 80%;
-    border-radius: 10px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }

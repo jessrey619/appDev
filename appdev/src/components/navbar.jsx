@@ -32,7 +32,7 @@ const ButtonAppBar = () => {
         <AppBar position="static" className="appBar" style={{marginTop:'-5px', height:'60px' ,backgroundColor:'rgb(223, 190, 57)', border: '1px solid #000', borderTop: '2px solid #000'}}>
           <Toolbar className="toolbar" style={{marginTop:'0%', paddingLeft:'5%', paddingRight:'3%'}}>
             <Link to="/"><button id="btnHome" className="buttonStyle">Home</button></Link>
-            <Link to="/about"><button id="btnAbout" className="buttonStyle">About Us</button></Link>
+            <Link to="/aboutus"><button id="btnAbout" className="buttonStyle">About Us</button></Link>
             <Link to="/services"><button id="btnClinic" className="buttonStyle">Clinical Services</button></Link>
             <Link to="/appointments"><button id="btnAppointment" className="buttonStyle">Appointments</button></Link>
             <Link to="/contact"><button id="btnContact" className="buttonStyle">Contact Us</button></Link>

@@ -53,7 +53,7 @@ export const PageServices = () =>{
                             </Link>
                         </Grid>
                         <Grid className='btnContainers' item xs={6} style={{paddingRight:'18%'}}>
-                            <Link to="/appointments">
+                            <Link to="/services/on-site-medical-services">
                                 <button className='btnService'><img className='logoService' src='../medLogo5.png' alt='MedServButton'/></button>
                             </Link>
                         </Grid>
