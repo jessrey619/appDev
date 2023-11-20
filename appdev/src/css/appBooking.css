@@ -92,3 +92,32 @@
     margin: 0px 20px 0px 20px;
 }
 
+.appListBtnList {
+    transition: background-color 200ms; /* 300ms duration for background-color transition */
+    background-color: rgb(212, 201, 158);
+}
+
+.appListItem {
+    overflow: scroll; /* Add this line to make the container scrollable */
+    max-height: 200px;
+  }
+
+
+
+.appListLinkToAppointment:hover .appListBtnList{
+    cursor: pointer;
+    background-color: rgb(112, 107, 85);
+    color: white;
+    
+}
+
+.appListInSquare{
+    background-color: rgb(252, 246, 218);
+    padding: 10px;
+    max-height: 300px;
+}
+
+.appListList{
+    max-height: 270px;
+    overflow: scroll;
+}

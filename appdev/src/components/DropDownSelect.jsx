@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function BasicSelect(props) {
-  const [age, setAge] = React.useState(0);
+  const [age, setAge] = React.useState(null);
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -14,7 +14,7 @@ export default function BasicSelect(props) {
   };
 
   return (
-    <Box sx={{ minWidth: 120, backgroundColor:'white', }}>
+    <Box sx={{ minWidth: 120, backgroundColor:'white',}}>
       <FormControl fullWidth>
         <Select
           id="demo-simple-select"
@@ -22,10 +22,13 @@ export default function BasicSelect(props) {
           onChange={handleChange}
         >
         {/* TODO: use API retrieve to get the List of Services and make menu Items out of them */}
-            <MenuItem value={0}>Select Service</MenuItem>
-            <MenuItem value={10}>Dental Services</MenuItem>
-            <MenuItem value={20}>Medical Services</MenuItem>
-            <MenuItem value={30}>Online Consultation</MenuItem>
+            <MenuItem value={null}>Select Service</MenuItem>
+            <MenuItem value={"Primary and Specialty Consultation"}>Primary Consultation</MenuItem>
+            <MenuItem value={"Laboratory and Diagnostics"}>Laboratory and Diagnostics</MenuItem>
+            <MenuItem value={"Online Consultation"}>Online Consultation</MenuItem>
+            <MenuItem value={"Medical Services"}>Medical Services</MenuItem>
+            <MenuItem value={"On-site Medical Services"}>On-site Medical Services</MenuItem>
+
         </Select>
       </FormControl>
     </Box>

@@ -6,7 +6,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 export default function DatePickerValue(props) {
-  const [value, setValue] = React.useState(dayjs());
+  const [value, setValue] = React.useState('');
 
   const onChange = (newValue)=>{
     props.parentalCallback(newValue);

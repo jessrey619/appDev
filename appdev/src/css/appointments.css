@@ -7,7 +7,7 @@
     body{
         background-color: rgb(255, 237, 149);
       }
-      
+    
 
     .outerSquare {
         width: 30%;
@@ -53,3 +53,5 @@
     .forgotPassword {
         text-align: left; /* Align text to the left */
     }
+
+    
