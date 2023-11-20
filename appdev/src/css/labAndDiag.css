@@ -63,13 +63,13 @@ body{
     margin-top: 30px;
     border-radius: 40px;
     width: 92%;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
 }
 
 .labDiagInnerSquare{
     background-color: rgb(252, 246, 218);
-    height: 550px;
+    height: 500px;
     border-radius: 30px;
     padding: 30px   ;
 }
@@ -78,4 +78,9 @@ body{
     width: 80%;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+
+.labDiagImg2{
+    width: 80%;
+    border-radius: 30px;
 }

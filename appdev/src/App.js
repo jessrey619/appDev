@@ -8,6 +8,8 @@ import { AppBooking } from './pages/AppBooking';
 import { LabAndDiag } from './pages/LabAndDiag';
 import { PageAboutUs } from './pages/AboutUs';
 import { Onsite } from './pages/OnsiteMedServ';
+import { AppViewList } from './pages/AppList';
+
 
 
 
@@ -23,6 +25,7 @@ function App() {
         {/* <Route index element={ISUD ANG <CONTACT/> na page ari}/> */}
 
         <Route index element={<AppBooking/>} path='/appointments/booking'/>
+        <Route index element={<AppViewList/>} path='/appointments/view-appointments'/>
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<Onsite/>}path='/services/on-site-medical-services'/>
       </Routes>
