@@ -9,6 +9,8 @@ import { LabAndDiag } from './pages/LabAndDiag';
 import { PageAboutUs } from './pages/AboutUs';
 import { Onsite } from './pages/OnsiteMedServ';
 import { AppViewList } from './pages/AppList';
+import { AppViewSpecific } from './pages/ViewSelectedAppointment';
+import { AppModifySpecific } from './pages/AppModifySpecific';
 
 
 
@@ -26,8 +28,11 @@ function App() {
 
         <Route index element={<AppBooking/>} path='/appointments/booking'/>
         <Route index element={<AppViewList/>} path='/appointments/view-appointments'/>
+        <Route index element={<AppViewSpecific/>} path={'/appointments/view-appointments/:aip'}></Route>
+        <Route index element={<AppModifySpecific/>}path='/appointments/modify-appointment/:aip'/>
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<Onsite/>}path='/services/on-site-medical-services'/>
+        
       </Routes>
       
     </>

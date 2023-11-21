@@ -76,9 +76,9 @@ export default function MenuListComposition() {
                 anchorRef.current.style.backgroundColor = buttonStyle.backgroundColor;
             }}
         >
-            <img src='../profileIcon.png' style={{width:'13px', marginRight:'15px'}}/>
+            <img src='/profileIcon.png' style={{width:'13px', marginRight:'15px'}}/>
             Profile
-            <img src='../profileDropDown.png' style={{width:'13px', marginLeft:'15px'}}/>
+            <img src='/profileDropDown.png' style={{width:'13px', marginLeft:'15px'}}/>
         </button>
 
         <Popper

@@ -6,6 +6,7 @@ import BasicSelect from '../components/DropDownSelect';
 import DatePickerValue from '../components/DatePicker';
 import TimePickerValue from '../components/Timepicker';
 import '../css/appBooking.css';
+import { useNavigate } from 'react-router-dom';
 
 export const AppBooking = () => {
   const name = "Rhadiel Gwapo Filler";
@@ -48,6 +49,8 @@ export const AppBooking = () => {
     minWidth: '200px',
   };
 
+  const navigate = useNavigate();
+
   const submitBooking = async () => {
     try {
       // Check if date and time are not empty
@@ -66,24 +69,25 @@ export const AppBooking = () => {
       const userConfirmed = window.confirm("Are you sure you want to submit this booking?");
       if (!userConfirmed) {
         return;
-      }
-      else{
+      } else {
         await axios.post("http://localhost:8080/appointment/insertAppointment", {
           date: date,
           time: time,
           pid: 3, // to change to a const pid na kuhaon inig login
-          sid: 1, // wait for medstaff api
+          staffname: "Jane Doe", // wait for medstaff api
           servtype: service,
-          status: true,
+          status: true,//to set to false when naa na ang medstaff
         }, {
           headers: {
             'Content-Type': 'application/json',
           },
+        }).then(() => {
+          alert("Booking Successful Waiting for Confirmation");
+  
+          // Change the URL after successful submission
+          navigate('/appointments/view-appointments');
         });
-        console.log("Success " + compareDate);
       }
-      // If the user confirmed, proceed with the booking submission
-      
   
       // You may add further actions after successful submission here
   
@@ -91,6 +95,7 @@ export const AppBooking = () => {
       console.error("Error submitting booking:", error);
     }
   };
+  
   
   
 

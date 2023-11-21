@@ -11,7 +11,8 @@ export const AppViewList = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/appointment/getAppointment/3`)
+    //TODO: Change into object patientID inig login
+    axios.post(`http://localhost:8080/appointment/getAppointment/${3}`)
       .then(response => {
         if (!(response.status === 200)) {
           console.error(response.statusText);
@@ -93,11 +94,6 @@ export const AppViewList = () => {
                 return null;
               })}
               </div>
-                            
-              
-              
-              
-
             </div>
           </div>
         </div>
