@@ -74,9 +74,9 @@ export const AppBooking = () => {
           date: date,
           time: time,
           pid: 3, // to change to a const pid na kuhaon inig login
-          staffname: "Jane Doe", // wait for medstaff api
+          staffname: "",
           servtype: service,
-          status: true,//to set to false when naa na ang medstaff
+          status: false,
         }, {
           headers: {
             'Content-Type': 'application/json',

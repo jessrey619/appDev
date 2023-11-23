@@ -11,6 +11,8 @@ import { Onsite } from './pages/OnsiteMedServ';
 import { AppViewList } from './pages/AppList';
 import { AppViewSpecific } from './pages/ViewSelectedAppointment';
 import { AppModifySpecific } from './pages/AppModifySpecific';
+import { MedStaffLoginPage } from './pages/MedstaffLogin';
+import { MedstaffMain } from './pages/MedstaffMain';
 
 
 
@@ -33,6 +35,10 @@ function App() {
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<Onsite/>}path='/services/on-site-medical-services'/>
         
+
+        {/* For Admin */}
+        <Route index element={<MedStaffLoginPage/>} path='/admin/login'/>
+        <Route index element={<MedstaffMain/>} path='admin/homepage'/>
       </Routes>
       
     </>
