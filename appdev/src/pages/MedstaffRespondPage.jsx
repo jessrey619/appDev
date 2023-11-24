@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 export const MedstaffMain = () => {
@@ -9,6 +9,8 @@ export const MedstaffMain = () => {
     const [medStaff, setMedstaff] = useState({});
     const location = useLocation();
     const staffId = location.state.staffId;
+
+    
 
     const acceptHandler = (appointment, medstaff) => {
         axios.put(`http://localhost:8080/appointment/updateAppointment?aid=${appointment.aip}`, {
@@ -75,6 +77,24 @@ export const MedstaffMain = () => {
                 console.error('Error fetching appointments:', error);
             });
     },[reloader])
+
+
+    // LOGIN CHECKER
+    const nav = useNavigate();
+
+    // Check if staffId has a value
+    if (!staffId) {
+        // If staffId is undefined, show a confirmation dialog
+        const isConfirmed = window.confirm("Invalid Entry. Do you want to go back to login?");
+
+        // If the user clicks "OK," navigate to "/medstaff/login"
+        if (isConfirmed) {
+        nav("/medstaff/login");
+        }
+
+        // You can also return null or a message if you don't want to render anything in this case
+        return null;
+    }
 
     return(
         <div style={{width:'60%', marginLeft:'20%'}}>

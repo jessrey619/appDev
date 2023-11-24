@@ -25,7 +25,7 @@ export const MedStaffLoginPage = () => {
             console.log('Login successful:', medStaff);
 
             // Use navigate to change the URL to "/admin/homepage" and pass staffId as a state
-            navigate("/admin/homepage", { state: { staffId: medStaff.staffId } });
+            navigate("/medstaff/homepage", { state: { staffId: medStaff.staffId } });
 
         } catch (error) {
             // Handle login error, e.g., show an error message to the user
