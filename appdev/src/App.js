@@ -9,6 +9,12 @@ import { LabAndDiag } from './pages/LabAndDiag';
 import { PageAboutUs } from './pages/AboutUs';
 import { Onsite } from './pages/OnsiteMedServ';
 import { AppViewList } from './pages/AppList';
+import { AppViewSpecific } from './pages/ViewSelectedAppointment';
+import { AppModifySpecific } from './pages/AppModifySpecific';
+import { MedStaffLoginPage } from './pages/MedstaffLogin';
+import { MedstaffMain } from './pages/MedstaffRespondPage';
+import { MedstaffViewBookings } from './pages/MedstaffViewBooking';
+import { MedstaffHomePage } from './pages/MedstaffHomepage';
 
 
 
@@ -26,8 +32,17 @@ function App() {
 
         <Route index element={<AppBooking/>} path='/appointments/booking'/>
         <Route index element={<AppViewList/>} path='/appointments/view-appointments'/>
+        <Route index element={<AppViewSpecific/>} path={'/appointments/view-appointments/:aip'}></Route>
+        <Route index element={<AppModifySpecific/>}path='/appointments/modify-appointment/:aip'/>
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<Onsite/>}path='/services/on-site-medical-services'/>
+        
+
+        {/* For medStaff */}
+        <Route index element={<MedStaffLoginPage/>} path='/medstaff/login'/>
+        <Route index element={<MedstaffHomePage/>} path='/medstaff/homepage'/>
+        <Route index element={<MedstaffMain/>} path='/medstaff/respondbooking'/>
+        <Route index element={<MedstaffViewBookings/>} path='/medstaff/view-all-bookings'/>
       </Routes>
       
     </>

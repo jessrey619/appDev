@@ -121,3 +121,119 @@
     max-height: 270px;
     overflow: scroll;
 }
+
+/* CSS FOR View Specific Appointment */
+
+.appViewSelectOutSquare{
+    padding: 20px;
+    background-color: rgb(255, 228, 121);
+    width: 96%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px 0px;
+    margin-top: 60px;
+    text-align: left;
+    padding: 10px;
+}
+
+.appViewSelectInSquare{
+    width: 92%;
+    padding: 30px;
+    padding-top: 3px;
+    display: flex;
+    height: 400px;
+}
+
+.appViewSelectLeftSquare{
+    background-color: rgb(252, 246, 218);
+    width: 47%;
+    border-radius: 30px;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+}
+
+.appViewSelectRightSquare{
+    background-color: rgb(252, 242, 193);
+    border-radius: 30px;
+    width: 47%;
+    margin-left: 6%;
+    
+}
+
+.appViewSelectOutsideOuterSquare{
+    margin-top: 10px;
+    width: 70%;
+}
+
+.appViewSelectHeader{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.appViewSelectRightSquare{
+    text-align: center;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+.appViewSelectBtnModify{
+    box-shadow: 2px 2px 0px 2px rgb(137, 56, 52);
+    margin-top: 10px;
+    width: 150px;
+
+}
+
+.appViewSelectBtnCancel{
+    box-shadow: 2px 2px 0px 2px rgb(223, 190, 58);
+    width: 150px;
+    
+}
+
+.appViewSelectImg{
+    width:87%;
+}
+
+.appViewSelectIcons{
+    width: 30px;
+}
+
+.appViewSelectBoxForContent{
+    display: block;
+    width: 60%;
+    margin-left: 20%;
+    text-align: center;
+}
+
+.appViewSelectContentContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word; /* Alternative to word-wrap: break-word; */
+    max-width: 100%; /* Optionally, set a maximum width for the container */
+    font-weight: bold;
+    text-align: left;
+}
+
+.appViewSelectReminders{
+    text-align: center;
+    margin-top: 10%;
+    font-weight: bold;
+}
+
+.appViewSelectReminders2{
+    color: rgb(168, 0, 0);
+    width: 60%;
+    font-size: 13px;
+    margin-left: 20%;
+    margin-top: 5%;
+    font-style: italic;
+    font-weight: bold;
+}   
+
+
+.appViewSelectContent {
+    margin-left: 2%;
+}
