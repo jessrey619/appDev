@@ -32,16 +32,36 @@ export const MedstaffMain = () => {
     };
 
     const deleteHandler = (appointment) => {
-        axios.delete(`http://localhost:8080/appointment/deleteAppointment/${appointment.aip}`)
-        .then(response => {
-            console.log(response);
-            alert("Booking Rejected");
-            setReloader(Math.random() * 100);
-        })
-        .catch(error => {
-            console.error('Error updating appointment:', error);
-        });
+        // Display a confirmation dialog
+        const isConfirmed = window.confirm('Are you sure you want to reject this booking?');
+    
+        // Check if the user confirmed
+        if (isConfirmed) {
+            axios.put(`http://localhost:8080/appointment/updateAppointment?aid=${appointment.aip}`, {
+                // Include the parameters you want to send in the request body
+                aid: appointment.aip,
+                date: appointment.date,
+                time: appointment.time,
+                pid: appointment.pid,
+                medstaff: appointment.medstaff,
+                status: false,
+                delete: true
+                // Add other parameters as needed
+            })
+            .then(response => {
+                console.log(response);
+                alert('Booking Rejected');
+                setReloader(Math.random() * 100);
+            })
+            .catch(error => {
+                console.error('Error updating appointment:', error);
+            });
+        } else {
+            // User clicked "Cancel" in the confirmation dialog
+            alert('Booking rejection canceled');
+        }
     };
+    
 
     useEffect(()=>{
         axios.post(`http://localhost:8080/medstaff/getSingleMedStaff/${staffId}`)
@@ -107,26 +127,28 @@ export const MedstaffMain = () => {
               <div className='appListList'></div>
             {appointments.map((appointment) => {
                 // Check if appointment.status is true
-                if (appointment.status === false) {
-                  return (
-                      <div key={appointment.id} className='appListItem' style={{ display: 'flex' }}>
-                        <div
-                            style={{
-                                width:'100%', display:'flex', alignItems:'center', border:'none', marginBottom:'10px', borderRadius:'10px', textAlign:'center', backgroundColor:'rgb(212, 201, 158)'
-                            }}>
-                            <div className='appListTxtForDate' style={{ marginRight: '10px', width:'25%' }}>{appointment.date}</div>
-                            <div className='appListTxtForDate' style={{ marginRight: '10px', width:'25%' }}>{appointment.time}</div>
-                            <div className='appListTxtForDate' style={{ marginRight: '10px', width:'25%' }}>{appointment.servtype}</div>
-                            <div className='appListTxtForDate' style={{ marginRight: '0px', width:'12%', textAlign:'right' }}><button 
-                                onClick={()=>acceptHandler(appointment,medStaff)}
-                                    >Accept</button></div>
-                            <div className='appListTxtForDate' style={{ marginRight: '10px', width:'12%', textAlign:'left'}}><button
-                                onClick={()=>deleteHandler(appointment)}
-                                    >Reject</button></div>
+                if (appointment.delete === false) {
+                    if(appointment.status === false){
+                        return (
+                            <div key={appointment.id} className='appListItem' style={{ display: 'flex' }}>
+                            <div
+                                style={{
+                                    width:'100%', display:'flex', alignItems:'center', border:'none', marginBottom:'10px', borderRadius:'10px', textAlign:'center', backgroundColor:'rgb(212, 201, 158)'
+                                }}>
+                                <div className='appListTxtForDate' style={{ marginRight: '10px', width:'25%' }}>{appointment.date}</div>
+                                <div className='appListTxtForDate' style={{ marginRight: '10px', width:'25%' }}>{appointment.time}</div>
+                                <div className='appListTxtForDate' style={{ marginRight: '10px', width:'25%' }}>{appointment.servtype}</div>
+                                <div className='appListTxtForDate' style={{ marginRight: '0px', width:'12%', textAlign:'right' }}><button 
+                                    onClick={()=>acceptHandler(appointment,medStaff)}
+                                        >Accept</button></div>
+                                <div className='appListTxtForDate' style={{ marginRight: '10px', width:'12%', textAlign:'left'}}><button
+                                    onClick={()=>deleteHandler(appointment)}
+                                        >Reject</button></div>
+                            </div>
                         </div>
-                    </div>
-                    
-                    );
+                        
+                        );
+                    }
                 }
                 // If appointment.status is false, don't render anything
                 return null;

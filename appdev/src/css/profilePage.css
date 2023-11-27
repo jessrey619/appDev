@@ -1,0 +1,72 @@
+
+.profileBiggerSquare{
+    width: 50%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    margin-top: 2%;
+    margin-left: 25%;
+}
+
+.hr{
+    width: 93%;
+}
+.profileBiggerSquare{
+    background-color: white;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.profileBiggerSquareContentsBottomHalf{
+    margin-top: 4%;
+}
+
+.profileBiggerSquareContentsTopHalf{
+    margin-top: 4%;
+}
+
+.inputDisabledDisplay{
+    background-color: rgb(217, 217, 217);
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 80%;
+    color:  rgb(87, 87, 87);
+}
+.inputDisabledDisplayContainer{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.profileBiggerSquareContentsPakapin{
+    margin-top: 5%;
+}
+
+.leftGuy {
+    margin-right: 50%;
+    
+}
+
+
+.profileBottomHalf{
+    display: flex;
+}
+.profileBookedAppointments{
+    width: 35%;
+    text-align: center;
+    padding-bottom: 40px;
+    margin-top: 2%;
+    background-color: white;
+    margin-left: 25%;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.profileSpaceBtnBookAppointments{
+    text-align: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+}

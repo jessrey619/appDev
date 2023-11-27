@@ -103,6 +103,7 @@ export const AppModifySpecific = () => {
           sid: 1, // wait for medstaff api
           servtype: service,
           status: true, // to change to false inig naa nay medstaff
+          delete: false
         }, {
           headers: {
             'Content-Type': 'application/json',

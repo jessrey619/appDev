@@ -77,6 +77,7 @@ export const AppBooking = () => {
           staffname: "",
           servtype: service,
           status: false,
+          delete: false
         }, {
           headers: {
             'Content-Type': 'application/json',
