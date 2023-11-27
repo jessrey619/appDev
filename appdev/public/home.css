@@ -1,0 +1,60 @@
+.pageServicesBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .pageServicesBody {
+    background-color: rgb(255, 237, 149);
+    padding-bottom: 5%;
+  }
+  
+  .outerRectangle {
+    background-color: rgb(252, 242, 193);
+    width: 60%;
+    padding: 2%;
+  }
+  
+  .innerRectangle {
+    background-color: #FFE479;
+    padding: 3%;
+  }
+  
+  .centerContent {
+    text-align: center;
+  }
+  
+  .logoService {
+    width: 80%;
+    max-height: 80px;
+    min-height: 80px;
+  }
+  
+  .btnService {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 10%;
+    overflow: hidden;
+    transition: background-color 0.3s ease-in-out; /* Add fade transition */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add drop shadow effect */
+    width: 100px;
+    min-height: 100px;
+  }
+  
+  .btnService:hover {
+    background-color: rgb(228, 228, 170);
+  }
+  
+  .btnContainers {
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+  }
+  
+  .txtButton {
+    text-align: center;
+    align-items: center;
+  }
+  
