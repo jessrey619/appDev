@@ -59,8 +59,7 @@ body{
 }
 .labDiagOuterSquare{
     background-color: rgb(252, 242, 193);
-    height: 600px;
-    margin-top: 30px;
+    height: 550px;
     border-radius: 40px;
     width: 92%;
     padding: 20px;
@@ -76,8 +75,8 @@ body{
 
 .labDiagImg{
     width: 80%;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-radius: 30px;
+    margin-bottom: 20px;
 }
 
 .labDiagImg2{
