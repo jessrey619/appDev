@@ -15,11 +15,14 @@ import { MedStaffLoginPage } from './pages/MedstaffLogin';
 import { MedstaffMain } from './pages/MedstaffRespondPage';
 import { MedstaffViewBookings } from './pages/MedstaffViewBooking';
 import { MedstaffHomePage } from './pages/MedstaffHomepage';
+import { ProfilePage } from './pages/ProfilePage';
+import { useState } from 'react';
 
 
 
 
 function App() {
+  const [login, setLogin] = useState(false);
   return (
     <>
       <TheHeader/>
@@ -28,6 +31,7 @@ function App() {
         <Route index element={<PageAboutUs/>} path='/aboutus'/>
         <Route index element={<PageServices/>} path='/services'/>
         <Route index element={<TheAppointment/>} path='/appointments'/>
+        <Route index element={<ProfilePage/>}path='/profile'/>
         {/* <Route index element={ISUD ANG <CONTACT/> na page ari}/> */}
 
         <Route index element={<AppBooking/>} path='/appointments/booking'/>
@@ -36,6 +40,7 @@ function App() {
         <Route index element={<AppModifySpecific/>}path='/appointments/modify-appointment/:aip'/>
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<Onsite/>}path='/services/on-site-medical-services'/>
+        
         
 
         {/* For medStaff */}
