@@ -13,7 +13,7 @@ export const ProfilePage = () => {
     }
 
     useEffect(()=>{
-
+        
     },[])
 
     return (
