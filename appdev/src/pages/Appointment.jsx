@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
-export const TheAppointment = () => {
+export const TheAppointment = (props) => {
+
   const goldBase = '#FFD700';
   const goldMain = alpha(goldBase, 0.7);
 
@@ -22,6 +23,7 @@ export const TheAppointment = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
 
   const handleClearEntries = () => {
@@ -38,10 +40,14 @@ export const TheAppointment = () => {
         },
       });
         const stud = response.data;
-  
+
       if (stud) {
+        
+        console.log(props);
+        console.log(typeof props.loginHandler);
+        props.loginHandler(true);
+        props.handlePatient(stud);
         console.log('Login successful:', stud);
-  
         navigate("/appointments/booking", { state: { sid: stud.sid } });
       } else {
         console.log('Login failed: Invalid username or password');
@@ -54,70 +60,69 @@ export const TheAppointment = () => {
     }
   };
   
+    return (
+      <div className="background">
+        <div className="outerSquare">
+          <div className="innerSquare">
+            <h2>User Authentication</h2>
+            <hr />
+            <br />
+            <div className="inputDiv">
+              <span>Username:</span>
+              <br />
+              <Input
+                className="input"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <br />
+              <span>Password:</span>
+              <br />
+              <Input
+                className="input2"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <br />
+            </div>
   
-  return (
-    <div className="background">
-      <div className="outerSquare">
-        <div className="innerSquare">
-          <h2>User Authentication</h2>
-          <hr />
-          <br />
-          <div className="inputDiv">
-            <span>Username:</span>
-            <br />
-            <Input
-              className="input"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <br />
-            <span>Password:</span>
-            <br />
-            <Input
-              className="input2"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <br />
-          </div>
-
-          <Button
-            className="btnClearEntries"
-            style={{
-              fontSize: '10px',
-              color: 'black',
-              backgroundColor: 'rgb(237, 191, 7)',
-              minWidth: '100px'
-            }}
-            onClick={handleClearEntries}
-          >
-            Clear Entries
-          </Button>
-       
             <Button
-              onClick={studentLoginHandler}
-              className="btnLogin"
+              className="btnClearEntries"
               style={{
                 fontSize: '10px',
                 color: 'black',
                 backgroundColor: 'rgb(237, 191, 7)',
                 minWidth: '100px'
               }}
+              onClick={handleClearEntries}
             >
-              Login
+              Clear Entries
             </Button>
-          
-
-          <br /><br />
-          <div className="forgotPassword">
-            <span className="forgotPass">Forgot your password? </span>
-            <Link to="/appointments/forgot-password">
-              <a href="forgot-password" className="btnClickHere">Click here</a>
-            </Link>
+         
+              <Button
+                onClick={studentLoginHandler}
+                className="btnLogin"
+                style={{
+                  fontSize: '10px',
+                  color: 'black',
+                  backgroundColor: 'rgb(237, 191, 7)',
+                  minWidth: '100px'
+                }}
+              >
+                Login
+              </Button>
+            
+  
+            <br /><br />
+            <div className="forgotPassword">
+              <span className="forgotPass">Forgot your password? </span>
+              <Link to="/appointments/forgot-password">
+                <a href="forgot-password" className="btnClickHere">Click here</a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };

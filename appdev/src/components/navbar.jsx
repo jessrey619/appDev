@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -23,34 +23,65 @@ const theme = createTheme({
   },
 });
 
-const ButtonAppBar = () => {
+const ButtonAppBar = (props) => {
   const location = useLocation();
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ flexGrow: 1, margin: 0, padding: 0 }}>
-        
-        <AppBar position="static" className="appBar" style={{marginTop:'-5px', height:'60px' ,backgroundColor:'rgb(223, 190, 57)', border: '1px solid #000', borderTop: '2px solid #000'}}>
-          <Toolbar className="toolbar" style={{marginTop:'0%', paddingLeft:'5%', paddingRight:'3%'}}>
-            <Link to="/"><button id="btnHome" className="buttonStyle">Home</button></Link>
-            <Link to="/aboutus"><button id="btnAbout" className="buttonStyle">About Us</button></Link>
-            <Link to="/services"><button id="btnClinic" className="buttonStyle">Clinical Services</button></Link>
-            <Link to="/appointments"><button id="btnAppointment" className="buttonStyle">Appointments</button></Link>
-            <Link to="/contact"><button id="btnContact" className="buttonStyle">Contact Us</button></Link>
 
-            <span style={{ marginLeft: 'auto' }}>
-              <MenuListComposition />
-              {/* <Input
-                id="headerSearch"
-                placeholder='Search'
-                sx={{ bgcolor: 'white', paddingLeft: '10px',  }} />
-              */}
-            </span>
-          </Toolbar>
-        </AppBar>
-      </Box>
-    </ThemeProvider>
-  );
+  if(props.loggedIn === true){
+    return(
+      <ThemeProvider theme={theme}>
+        <Box sx={{ flexGrow: 1, margin: 0, padding: 0 }}>
+          
+          <AppBar position="static" className="appBar" style={{marginTop:'-5px', height:'60px' ,backgroundColor:'rgb(223, 190, 57)', border: '1px solid #000', borderTop: '2px solid #000'}}>
+            <Toolbar className="toolbar" style={{marginTop:'0%', paddingLeft:'5%', paddingRight:'3%'}}>
+              <Link to="/"><button id="btnHome" className="buttonStyle">Home</button></Link>
+              <Link to="/aboutus"><button id="btnAbout" className="buttonStyle">About Us</button></Link>
+              <Link to="/services"><button id="btnClinic" className="buttonStyle">Clinical Services</button></Link>
+              <Link to="/appointments/booking"><button id="btnAppointment" className="buttonStyle">Appointments</button></Link>
+              <Link to="/contact"><button id="btnContact" className="buttonStyle">Contact Us</button></Link>
+
+              <span style={{ marginLeft: 'auto' }}>
+                <MenuListComposition loggedIn={props.loggedIn} handleLogin={props.handleLogin} patient={props.patient} handlePatient={props.handlePatient}/>
+                {/* <Input
+                  id="headerSearch"
+                  placeholder='Search'
+                  sx={{ bgcolor: 'white', paddingLeft: '10px',  }} />
+                */}
+              </span>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </ThemeProvider>
+    )
+  }
+  else{
+    return (
+      <ThemeProvider theme={theme}>
+        <Box sx={{ flexGrow: 1, margin: 0, padding: 0 }}>
+          
+          <AppBar position="static" className="appBar" style={{marginTop:'-5px', height:'60px' ,backgroundColor:'rgb(223, 190, 57)', border: '1px solid #000', borderTop: '2px solid #000'}}>
+            <Toolbar className="toolbar" style={{marginTop:'0%', paddingLeft:'5%', paddingRight:'3%'}}>
+              <Link to="/"><button id="btnHome" className="buttonStyle">Home</button></Link>
+              <Link to="/aboutus"><button id="btnAbout" className="buttonStyle">About Us</button></Link>
+              <Link to="/services"><button id="btnClinic" className="buttonStyle">Clinical Services</button></Link>
+              <Link to="/appointments"><button id="btnAppointment" className="buttonStyle">Appointments</button></Link>
+              <Link to="/contact"><button id="btnContact" className="buttonStyle">Contact Us</button></Link>
+  
+              <span style={{ marginLeft: 'auto' }}>
+                <MenuListComposition loggedIn={props.loggedIn} handleLogin={props.handleLogin} patient={props.patient}/>
+                {/* <Input
+                  id="headerSearch"
+                  placeholder='Search'
+                  sx={{ bgcolor: 'white', paddingLeft: '10px',  }} />
+                */}
+              </span>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </ThemeProvider>
+    );
+  }
+  
 };
 
 export default ButtonAppBar;

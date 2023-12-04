@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 export const MedstaffViewBookings = () => {
@@ -63,20 +63,17 @@ export const MedstaffViewBookings = () => {
                         // Check if appointment.status is true
                         if (appointment.status === true) {
                         return (
-                            <Link className='appListLinkToAppointment' to={`/appointments/view-appointments/${appointment.aip}`} style={{ textDecoration:'none'}}>
-                            <div key={appointment.id} className='appListItem' style={{ display: 'flex' }}>
+                            <div key={appointment.aip} className='appListItem' style={{ display: 'flex' }}>
                                 <button className='appListBtnList'
                                 style={{
                                     width:'100%', display:'flex', alignItems:'center', border:'none', marginBottom:'10px', borderRadius:'10px'
                                 }}>
-                                <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.date}</div>
-                                <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.time}</div>
-                                <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.servtype}</div>
-                                <div className='appListTxtForDate2' style={{textAlign:'center', width:'25%'}}>{appointment.sid}</div>
+                                  <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.date}</div>
+                                  <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.time}</div>
+                                  <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.servtype}</div>
+                                  <div className='appListTxtForDate2' style={{textAlign:'center', width:'25%'}}>{appointment.medstaff}</div>
                                 </button>
-                                
                             </div>
-                            </Link>
                         );
                         }
                         // If appointment.status is false, don't render anything

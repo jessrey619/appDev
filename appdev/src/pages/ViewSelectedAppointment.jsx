@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import BasicSelect from '../components/DropDownSelect';
@@ -7,10 +7,12 @@ import DatePickerValue from '../components/DatePicker';
 import TimePickerValue from '../components/Timepicker';
 import '../css/appBooking.css';
 
-export const AppViewSpecific = () => {
+export const AppViewSpecific = (props) => {
   const [appointments, setAppointments] = useState([]);
   const yes = useParams();
   
+  const location = useLocation();
+  const patientId = location.state?.pid;
 
   useEffect(() => {
     
@@ -65,69 +67,115 @@ export const AppViewSpecific = () => {
   };
   
 
-  const handleCancelBtn = ()=> {
-
+  const handleCancelBtn = (appointment)=> {
+    // Display a confirmation dialog
+    const isConfirmed = window.confirm('Are you sure you want to cancel this booking?');
+    
+    // Check if the user confirmed
+    if (isConfirmed) {
+        axios.put(`http://localhost:8080/appointment/updateAppointment?aid=${appointment.aip}`, {
+            // Include the parameters you want to send in the request body
+            aid: appointment.aip,
+            date: appointment.date,
+            time: appointment.time,
+            pid: appointment.pid,
+            medstaff: appointment.staffName,
+            status: false,
+            delete: true
+        })
+        .then(response => {
+            console.log(response);
+            alert('Booking Cancelled');
+            nav('/appointments/view-appointments' , { state: { pid: patientId }})
+        })
+        .catch(error => {
+            console.error('Error updating appointment:', error);
+        });
+    } else {
+        // User clicked "Cancel" in the confirmation dialog
+        alert('Booking rejection canceled');
+    }
   }
 
-  return (
-    <div className="appBookBg">
-      <div className="sideNav">
-        <div className='sideNavButtons'>
-          <Link to='/appointments/booking'>
-            <Button className='btnBookApp' style={inactiveButton}>Book Appointment</Button>
-          </Link>
-          <br /><br />
-          <Link to='/appointments/view-appointments'>
-            <Button className='btnViewApp' style={activeButton}>View Appointments</Button>
-          </Link>
+  const nav = useNavigate();
+
+  const handleBookAppointment = () => {
+    nav('/appointments/booking' , { state: { sid: patientId }})
+  }
+
+  const handleViewAppointment = () => {
+    nav('/appointments/view-appointments' , { state: { pid: patientId }})
+  }
+
+
+
+  if (props.loggedIn !== true) {
+    alert("You need to log in to access this page");
+    setTimeout(() => {
+      // Navigate to the login page or any other desired route
+      nav('/appointments');
+    }, 0);
+  }
+
+  else{
+    return (
+      <div className="appBookBg">
+        <div className="sideNav">
+          <div className='sideNavButtons'>
+            <Button className='btnBookApp' style={activeButton} onClick={handleBookAppointment}>Book Appointment</Button>
+            <br /><br />
+            <Button className='btnViewApp' style={inactiveButton} onClick={handleViewAppointment}>View Appointments</Button>
+          </div>
         </div>
-      </div>
-      <div className="mainBody">
-        <div className="appViewSelectOutsideOuterSquare">
-          <div className="appViewSelectOutSquare">
-            <Link to="/appointments/view-appointments">
-              <img src='/appViewSelectBtnBack.png' style={{width:'15px', marginLeft:'30px'}}></img>
-            </Link>
-            <span className='appViewSelectHeader'>{appointments.servtype} (Booked)</span>
-            <div className='appViewSelectInSquare'>
-                <div className='appViewSelectLeftSquare'>
-                <h1>Your Booking</h1>
-                    <div className='appViewSelectBoxForContent'>
-                        <div className='appViewSelectContentContainer'>
-                            <img className='appViewSelectIcons' src="/clockIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.time}</div>
-                        </div>
-                        <div className='appViewSelectContentContainer'>
-                            <img className='appViewSelectIcons' src="/calendarIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.date}</div>
-                        </div>
-                        <div className='appViewSelectContentContainer'>
-                            <img className='appViewSelectIcons' src="/serviceIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.servtype}</div>
-                        </div>
-                        <div className='appViewSelectContentContainer'>
-                            <img className='appViewSelectIcons' src="/medstaffIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.sid}</div>
-                        </div>
-                        
-                    </div>
-                    <div className='appViewSelectReminders'>
-                        Please arrive 5 minutes earlier.
-                    </div>
-                    <div className='appViewSelectReminders2'>
-                        Feel free to make any changes that work for you; we'll be informed!
-                    </div>
-                </div>
-
-                <div className='appViewSelectRightSquare'>
-                    <Button className='appViewSelectBtnModify' style={{backgroundColor: 'rgb(223, 190, 58)', marginTop:'6vh', color: 'black'}}
-                      onClick={handleModifyBtn}>Modify</Button><br/>
-                    <Button className='appViewSelectBtnCancel' style={{backgroundColor: 'rgb(137, 56, 52)', marginTop:'3vh', color: 'black', marginBottom:'3vh'}}  
-                      onClick={handleCancelBtn}>Cancel</Button>
-
-                    <img className='appViewSelectImg' src='/viewAppointmentSpecific.png' alt='appSpecificPic'></img>
-                </div>
+        <div className="mainBody">
+          <div className="appViewSelectOutsideOuterSquare">
+            <div className="appViewSelectOutSquare">
+              <Link to="/appointments/view-appointments">
+                <img src='/appViewSelectBtnBack.png' style={{width:'15px', marginLeft:'30px'}}></img>
+              </Link>
+              <span className='appViewSelectHeader'>{appointments.servtype} (Booked)</span>
+              <div className='appViewSelectInSquare'>
+                  <div className='appViewSelectLeftSquare'>
+                  <h1>Your Booking</h1>
+                      <div className='appViewSelectBoxForContent'>
+                          <div className='appViewSelectContentContainer'>
+                              <img className='appViewSelectIcons' src="/clockIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.time}</div>
+                          </div>
+                          <div className='appViewSelectContentContainer'>
+                              <img className='appViewSelectIcons' src="/calendarIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.date}</div>
+                          </div>
+                          <div className='appViewSelectContentContainer'>
+                              <img className='appViewSelectIcons' src="/serviceIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.servtype}</div>
+                          </div>
+                          <div className='appViewSelectContentContainer'>
+                              <img className='appViewSelectIcons' src="/medstaffIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.staffName}</div>
+                          </div>
+                          
+                      </div>
+                      <div className='appViewSelectReminders'>
+                          Please arrive 5 minutes earlier.
+                      </div>
+                      <div className='appViewSelectReminders2'>
+                          Feel free to make any changes that work for you; we'll be informed!
+                      </div>
+                  </div>
+  
+                  <div className='appViewSelectRightSquare'>
+                      <Button className='appViewSelectBtnModify' style={{backgroundColor: 'rgb(223, 190, 58)', marginTop:'6vh', color: 'black'}}
+                        onClick={handleModifyBtn}>Modify</Button><br/>
+                      <Button className='appViewSelectBtnCancel' style={{backgroundColor: 'rgb(137, 56, 52)', marginTop:'3vh', color: 'black', marginBottom:'3vh'}}  
+                        onClick={()=>{handleCancelBtn(appointments)}}>Cancel</Button>
+  
+                      <img className='appViewSelectImg' src='/viewAppointmentSpecific.png' alt='appSpecificPic'></img>
+                  </div>
+              </div>
+  
             </div>
-
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  
 };

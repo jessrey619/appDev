@@ -16,7 +16,7 @@ import { MedstaffMain } from './pages/MedstaffRespondPage';
 import { MedstaffViewBookings } from './pages/MedstaffViewBooking';
 import { MedstaffHomePage } from './pages/MedstaffHomepage';
 import { ProfilePage } from './pages/ProfilePage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Home } from './pages/Home';
 import { PriAndSpe } from './pages/PriAndSpe';
 import { ThePassword } from './pages/ForgotPassword';
@@ -26,35 +26,51 @@ import { ThePassword } from './pages/ForgotPassword';
 
 function App() {
   const [login, setLogin] = useState(false);
+  const [patient, setPatient] = useState({});
+
+  function handleLogin(ans){
+    setLogin(ans);
+  }
+
+  function handlePatient(ans){
+    setPatient(ans);
+  }
+
+  useEffect(()=>{
+    
+  }, [login])
+
   return (
     <>
-      <TheHeader/>
+      <TheHeader loggedIn ={login} handleLogin={handleLogin} patient={patient} handlePatient={handlePatient}/>
       <Routes>
         <Route index element={<Home/>} path='/home'/>
         <Route index element={<Home/>} path='/'/>
         <Route index element={<PageAboutUs/>} path='/aboutus'/>
         <Route index element={<PageServices/>} path='/services'/>
-        <Route index element={<TheAppointment/>} path='/appointments'/>
-        <Route index element={<ProfilePage/>}path='/profile'/>
-        {/* <Route index element={ISUD ANG <CONTACT/> na page ari}/> */}
+        
 
-        <Route index element={<AppBooking/>} path='/appointments/booking'/>
-        <Route index element={<AppViewList/>} path='/appointments/view-appointments'/>
-        <Route index element={<AppViewSpecific/>} path={'/appointments/view-appointments/:aip'}></Route>
-        <Route index element={<AppModifySpecific/>}path='/appointments/modify-appointment/:aip'/>
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<Onsite/>}path='/services/on-site-medical-services'/>
-        
-        
-        {/* <Route index element={ISUD ANG <ABOUT/> na page ari}/> */}
-        <Route index element={<PageServices/>} path='/services'/>
-        <Route index element={<TheAppointment/>} path='/appointments'/>
-        {/* <Route index element={ISUD ANG <CONTACT/> na page ari}/> */}
-        
-        <Route index element={<AppBooking/>} path='/appointments/booking'/>
         <Route index element={<ThePassword/>}path='/appointments/forgot-password'/>
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<PriAndSpe/>}path='/services/primary-and-specialty-consultation'/>
+        
+        <Route index element={<PageServices/>} path='/services'/>
+
+
+        {/* PAGES THAT NEED LOGIN VERIFICATION */}
+        <Route
+          index
+          path='/appointments'
+          element={<TheAppointment loginHandler={handleLogin} handlePatient={handlePatient} patient ={patient}/>}
+        />
+        <Route index element={<AppBooking loggedIn ={login} patient={patient}/>} path='/appointments/booking'/>
+        <Route index element={<AppViewList loggedIn ={login} patient={patient}/>} path='/appointments/view-appointments'/>
+        <Route index element={<AppViewSpecific loggedIn ={login} patient={patient}/>} path={'/appointments/view-appointments/:aip'}/>
+        <Route index element={<AppModifySpecific loggedIn ={login} patient={patient}/>}path='/appointments/modify-appointment/:aip'/>
+        <Route index element={<ProfilePage loggedIn ={login} patient={patient}/>}path='/profile'/>
+        
 
         {/* For medStaff */}
         <Route index element={<MedStaffLoginPage/>} path='/medstaff/login'/>
