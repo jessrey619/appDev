@@ -104,11 +104,21 @@
 
 
 
-.appListLinkToAppointment:hover .appListBtnList{
+.appListLinkToAppointment:hover{
     cursor: pointer;
     background-color: rgb(112, 107, 85);
     color: white;
-    
+}
+
+.appListLinkToAppointment{
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    align-content: center;
+    background-color: rgb(212, 201, 158);
+    margin-bottom: 3px;
 }
 
 .appListInSquare{

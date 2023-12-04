@@ -22,7 +22,7 @@ export const MedstaffMain = () => {
             status: true
         })
         .then(response => {
-            console.log(response);
+            console.log(response.data);
             alert("Booking Accepted");
             setReloader(Math.random() * 100);
         })
@@ -43,7 +43,7 @@ export const MedstaffMain = () => {
                 date: appointment.date,
                 time: appointment.time,
                 pid: appointment.pid,
-                medstaff: appointment.medstaff,
+                medstaff: appointment.staffName,
                 status: false,
                 delete: true
                 // Add other parameters as needed
@@ -74,6 +74,7 @@ export const MedstaffMain = () => {
             })
             .then(data => {
                 setMedstaff(data);
+                console.log(data)
             })
             .catch(error => {
                 console.error('Error fetching appointments:', error);

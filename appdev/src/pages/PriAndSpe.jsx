@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import '../css/priAndSpe.css'
+// import '../css/priAndSpe.css'
 import { Link } from 'react-router-dom'
 import { PriLabDiag } from '../components/labdiagphotos'
 

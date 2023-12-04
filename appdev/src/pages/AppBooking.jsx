@@ -1,5 +1,4 @@
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import BasicSelect from '../components/DropDownSelect';
@@ -8,12 +7,43 @@ import TimePickerValue from '../components/Timepicker';
 import '../css/appBooking.css';
 import { useNavigate } from 'react-router-dom';
 
-export const AppBooking = () => {
-  const name = "Rhadiel Gwapo Filler";
+export const AppBooking = (props) => {
+
+  const patientId = props.patient.sid;
+  const nav = useNavigate();
+
+  
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [service, setService] = useState(null);
   const [compareDate, setCompareDate] = useState('');
+  const [patientData, setPatientData] = useState({});
+  const name = `${patientData.fname} ${patientData.lname}`;
+
+  useState(()=>{
+    axios.get(`http://localhost:8080/stud/getStudentById/${patientId}`)
+          .then(response => {
+            if (!(response.status === 200)) {
+              console.error(response.statusText);
+              throw new Error('Network response was not ok');
+            }
+            return response.data; // Extract the data from the response
+          })
+          .then(data => {
+            setPatientData(data);
+          })
+          .catch(error => {
+            console.error('Error fetching appointments:', error);
+          });
+  },[]);
+
+  const handleBookAppointment = () => {
+    nav('/appointments/booking' , { state: { pid: patientId }})
+  }
+
+  const handleViewAppointment = () => {
+    nav('/appointments/view-appointments' , { state: { pid: patientId }})
+  }
 
   const handleDate = (dateData) => {
     setCompareDate(dateData);
@@ -29,8 +59,8 @@ export const AppBooking = () => {
   };
 
   useEffect(() => {
-    console.log("date"+date);
-    console.log("time"+time);
+    // console.log("date"+date);
+    // console.log("time"+time);
     // console.log(service);
   }, [service, date, time]);
 
@@ -73,7 +103,7 @@ export const AppBooking = () => {
         await axios.post("http://localhost:8080/appointment/insertAppointment", {
           date: date,
           time: time,
-          pid: 3, // to change to a const pid na kuhaon inig login
+          pid: patientId, // to change to a const pid na kuhaon inig login
           staffname: "",
           servtype: service,
           status: false,
@@ -86,7 +116,7 @@ export const AppBooking = () => {
           alert("Booking Successful Waiting for Confirmation");
   
           // Change the URL after successful submission
-          navigate('/appointments/view-appointments');
+          navigate('/appointments/view-appointments' , { state: { pid: patientId }});
         });
       }
   
@@ -96,72 +126,78 @@ export const AppBooking = () => {
       console.error("Error submitting booking:", error);
     }
   };
-  
-  
-  
 
-  return (
-    <div className="appBookBg">
-      <div className="sideNav">
-        <div className='sideNavButtons'>
-          <Link to='/appointments/booking'>
-            <Button className='btnBookApp' style={activeButton}>Book Appointment</Button>
-          </Link>
-          <br /><br />
-          <Link to='/appointments/view-appointments'>
-            <Button className='btnViewApp' style={inactiveButton}>View Appointments</Button>
-          </Link>
+
+  if (props.loggedIn !== true) {
+    alert("You need to log in to access this page");
+    setTimeout(() => {
+      // Navigate to the login page or any other desired route
+      navigate('/appointments');
+    }, 0);
+  }
+
+  else{
+    return (
+      <div className="appBookBg">
+        <div className="sideNav">
+          <div className='sideNavButtons'>
+            <Button className='btnBookApp' style={activeButton} onClick={handleBookAppointment}>Book Appointment</Button>
+            <br /><br />
+            <Button className='btnViewApp' style={inactiveButton} onClick={handleViewAppointment}>View Appointments</Button>
+          </div>
         </div>
-      </div>
-      <div className="mainBody">
-        <div className="outsideOuterSquare">
-          <h3>APPOINTMENT SERVICES</h3>
-          <div className="appBookOutSquare">
-            <div className="appBookInSquare">
-              <div className='inputData'>
-                <div className="inputContainer">
-                  <div className="inputField">
-                    <span>Name:</span>
+        <div className="mainBody">
+          <div className="outsideOuterSquare">
+            <h3>APPOINTMENT SERVICES</h3>
+            <div className="appBookOutSquare">
+              <div className="appBookInSquare">
+                <div className='inputData'>
+                  <div className="inputContainer">
+                    <div className="inputField">
+                      <span>Name:</span>
+                    </div>
+                    <div className="inputData">
+                      <span>{name}</span>
+                    </div>
                   </div>
-                  <div className="inputData">
-                    <span>{name}</span>
+                  <div className="inputContainer">
+                    <div className="inputField">
+                      <span>Service Type:</span>
+                    </div>
+                    <span className="inputData">
+                      <BasicSelect parentalCallback={handleService} />
+                    </span>
+                  </div>
+                  <div className="inputContainer">
+                    <div className="inputField">
+                      <span className='inputField'>Date: </span>
+                    </div>
+                    <span className="inputData">
+                      <DatePickerValue parentalCallback={handleDate} />
+                    </span>
+                  </div>
+                  <div className="inputContainer">
+                    <div className="inputField">
+                      <span className='inputField'>Time: </span>
+                    </div>
+                    <span className="inputData">
+                      <TimePickerValue parentalCallback={handleTime} />
+                    </span>
                   </div>
                 </div>
-                <div className="inputContainer">
-                  <div className="inputField">
-                    <span>Service Type:</span>
-                  </div>
-                  <span className="inputData">
-                    <BasicSelect parentalCallback={handleService} />
-                  </span>
-                </div>
-                <div className="inputContainer">
-                  <div className="inputField">
-                    <span className='inputField'>Date: </span>
-                  </div>
-                  <span className="inputData">
-                    <DatePickerValue parentalCallback={handleDate} />
-                  </span>
-                </div>
-                <div className="inputContainer">
-                  <div className="inputField">
-                    <span className='inputField'>Time: </span>
-                  </div>
-                  <span className="inputData">
-                    <TimePickerValue parentalCallback={handleTime} />
-                  </span>
-                </div>
+                <br />
+                <Button
+                  style={{ color: 'black', backgroundColor: 'rgb(223, 190, 57)', width: '100px', boxShadow: '2px 2px 2px 0px' }}
+                  onClick={submitBooking}
+                >Submit</Button>
+                <br /><br />
               </div>
-              <br />
-              <Button
-                style={{ color: 'black', backgroundColor: 'rgb(223, 190, 57)', width: '100px', boxShadow: '2px 2px 2px 0px' }}
-                onClick={submitBooking}
-              >Submit</Button>
-              <br /><br />
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  
 };
