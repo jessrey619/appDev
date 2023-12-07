@@ -41,7 +41,7 @@ export default function BasicSelect(props) {
           onChange={handleChange}
         >
           {items.map((item) => (
-            <MenuItem key={item.servname} value={item.servname}>
+            <MenuItem key={item.sid} value={item.servname}>
               {item.description}
             </MenuItem>
           ))}
