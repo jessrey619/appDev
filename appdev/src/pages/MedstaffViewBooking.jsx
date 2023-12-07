@@ -6,6 +6,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 export const MedstaffViewBookings = () => {
 
     const [appointments, setAppointments] = useState([]);
+    const nav = useNavigate();
+    const location = useLocation();
+    const staffId = location.state?.staffId;
+
+    const viewSpecifcHandler = (aid) => {
+      nav(`/medstaff/view-specific-booking/${aid}`, {state:{staffId:staffId}});
+    }
+
     useEffect(() => {
         //TODO: Change into object patientID inig login
         axios.get(`http://localhost:8080/appointment/getAllAppointments`)
@@ -24,9 +32,7 @@ export const MedstaffViewBookings = () => {
           });
       }, []);
 
-      const location = useLocation();
-      const staffId = location.state?.staffId;
-      const nav = useNavigate();
+      
     
       // Check if staffId has a value
       if (!staffId) {
@@ -61,19 +67,24 @@ export const MedstaffViewBookings = () => {
                     <div className='appListList'>
                     {appointments.map((appointment) => {
                         // Check if appointment.status is true
+                        
                         if (appointment.status === true) {
                         return (
+                          
                             <div key={appointment.aip} className='appListItem' style={{ display: 'flex' }}>
-                                <button className='appListBtnList'
+                                <button className='appListBtnList' key={appointment.aip}
                                 style={{
                                     width:'100%', display:'flex', alignItems:'center', border:'none', marginBottom:'10px', borderRadius:'10px'
-                                }}>
+                                }}
+                                onClick={()=>{viewSpecifcHandler(appointment.aip)}}
+                                >
                                   <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.date}</div>
                                   <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.time}</div>
                                   <div className='appListTxtForDate' style={{ marginRight: '10px', width:'20%' }}>{appointment.servtype}</div>
-                                  <div className='appListTxtForDate2' style={{textAlign:'center', width:'25%'}}>{appointment.medstaff}</div>
+                                  <div className='appListTxtForDate2' style={{textAlign:'center', width:'25%'}}>{appointment.staffName}</div>
                                 </button>
                             </div>
+                          
                         );
                         }
                         // If appointment.status is false, don't render anything

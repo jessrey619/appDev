@@ -13,13 +13,13 @@
     padding-bottom: 5%;
   }
   
-  .outerRectangle {
+  .clinicOuterRectangle {
     background-color: rgb(252, 242, 193);
     width: 60%;
     padding: 2%;
   }
   
-  .innerRectangle {
+  .clinicInnerRectangle {
     background-color: rgb(252, 246, 218);
     padding: 3%;
   }
