@@ -20,6 +20,8 @@ import { useEffect, useState } from 'react';
 import { Home } from './pages/Home';
 import { PriAndSpe } from './pages/PriAndSpe';
 import { ThePassword } from './pages/ForgotPassword';
+import { MedstaffViewSpecific } from './pages/MedstaffViewSelectedBooking';
+import { MedStaffModifySpecific } from './pages/MedStaffModifySpecific';
 
 
 
@@ -74,9 +76,12 @@ function App() {
 
         {/* For medStaff */}
         <Route index element={<MedStaffLoginPage/>} path='/medstaff/login'/>
+        <Route index element={<MedStaffLoginPage/>} path='/medstaff'/>
         <Route index element={<MedstaffHomePage/>} path='/medstaff/homepage'/>
         <Route index element={<MedstaffMain/>} path='/medstaff/respondbooking'/>
         <Route index element={<MedstaffViewBookings/>} path='/medstaff/view-all-bookings'/>
+        <Route index element={<MedstaffViewSpecific/>} path='/medstaff/view-specific-booking/:aid'/>
+        <Route index element={<MedStaffModifySpecific/>} path='/medstaff/modify-appointment/:aid'/>
       </Routes>
       
     </>

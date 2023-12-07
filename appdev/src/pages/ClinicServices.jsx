@@ -15,8 +15,8 @@ export const PageServices = () =>{
                 The Cebu Institute of Technology-University Clinic is a multi-specialty, full service clinic that serves a wide range of medical services.<br/>
                 Click on each icon to learn more about these services.
             </span>
-            <div className='outerRectangle' >
-                <Grid className='innerRectangle' container>
+            <div className='clinicOuterRectangle' >
+                <Grid className='clinicInnerRectangle' container>
                     <Grid className='btnContainers'item xs={4}>
                         <Link to="/appointments">
                             <button className='btnService'><img className='logoService' src='../medLogo1.png' alt='MedServButton'/></button>

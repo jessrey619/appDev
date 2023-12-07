@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input, alpha, createTheme, getContrastRatio } from "@mui/material";
+import { Button, Input } from "@mui/material";
 import '../css/appointments.css';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -7,19 +7,6 @@ import axios from 'axios';
 
 export const TheAppointment = (props) => {
 
-  const goldBase = '#FFD700';
-  const goldMain = alpha(goldBase, 0.7);
-
-  const theme = createTheme({
-    palette: {
-      gold: {
-        main: goldMain,
-        light: alpha(goldBase, 0.5),
-        dark: alpha(goldBase, 0.9),
-        contrastText: getContrastRatio(goldMain, '#fff') > 4.5 ? '#fff' : '#111',
-      },
-    },
-  });
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

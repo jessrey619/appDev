@@ -2,9 +2,6 @@ import { Button } from '@mui/material';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import BasicSelect from '../components/DropDownSelect';
-import DatePickerValue from '../components/DatePicker';
-import TimePickerValue from '../components/Timepicker';
 import '../css/appBooking.css';
 
 export const AppViewSpecific = (props) => {
@@ -163,7 +160,7 @@ export const AppViewSpecific = (props) => {
                   <div className='appViewSelectRightSquare'>
                       <Button className='appViewSelectBtnModify' style={{backgroundColor: 'rgb(223, 190, 58)', marginTop:'6vh', color: 'black'}}
                         onClick={handleModifyBtn}>Modify</Button><br/>
-                      <Button className='appViewSelectBtnCancel' style={{backgroundColor: 'rgb(137, 56, 52)', marginTop:'3vh', color: 'black', marginBottom:'3vh'}}  
+                      <Button className='appViewSelectBtnCancel' style={{backgroundColor: 'rgb(137, 56, 52)', marginTop:'3vh', color: 'white', marginBottom:'3vh'}}  
                         onClick={()=>{handleCancelBtn(appointments)}}>Cancel</Button>
   
                       <img className='appViewSelectImg' src='/viewAppointmentSpecific.png' alt='appSpecificPic'></img>
