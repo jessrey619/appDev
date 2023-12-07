@@ -1,57 +1,55 @@
-    .background {
-        height: 590px;
-        display: flex;
-        justify-content: center; /* Align children horizontally to the center */
-        align-items: center; /* Align children vertically to the center */
-    }
-    body{
-        background-color: rgb(255, 237, 149);
-      }
-    
+.background {
+    height: 590px;
+    display: flex;
+    justify-content: center; /* Align children horizontally to the center */
+    align-items: center; 
+}
+body{
+    background-color: rgb(255, 237, 149);
+  }
+  
 
-    .outerSquare {
-        width: 30%;
-        align-items: center;
-        text-align: center;
-        margin-top: 10px;
-        background-color: rgb(255, 228, 121);
-        padding: 0px 50px 50px 50px;
-        box-shadow: 5px 5px 10px 0px;
-    }
+.outerSquare {
+    width: 30%;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    background-color: rgb(255, 228, 121);
+    padding: 0px 50px 50px 50px;
+    box-shadow: 5px 5px 10px 0px;
+}
 
-    .input {
-        width: 100%;
-        margin-bottom: 30px;
-        background-color: white;
-    }
+.input {
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: white;
+}
 
-    .input2{
-        background-color: white;
-        margin-bottom: 10px;
-        width: 100%;
-    }
+.input2{
+    background-color: white;
+    margin-bottom: 10px;
+    width: 100%;
+}
 
-    .btnClearEntries {
-        font-size: 10px;
-        background-color: rgb(237, 191, 7);
-        color: black;
-        float: left; /* Align to the left */
-        margin-bottom: 0px;
-    }
+.btnClearEntries {
+    font-size: 10px;
+    background-color: rgb(237, 191, 7);
+    color: black;
+    float: left; /* Align to the left */
+    margin-bottom: 0px;
+}
 
-    .btnLogin {
-        font-size: 10px;
-        background-color: rgb(237, 191, 7);
-        color: black;
-        float: right; /* Align to the right */
-    }
+.btnLogin {
+    font-size: 10px;
+    background-color: rgb(237, 191, 7);
+    color: black;
+    float: right; /* Align to the right */
+}
 
-    .inputDiv {
-        text-align: left;
-    }
+.inputDiv {
+    text-align: left;
+}
 
-    .forgotPassword {
-        text-align: left; /* Align text to the left */
-    }
-
-    
+.forgotPassword {
+    text-align: left; /* Align text to the left */
+}
