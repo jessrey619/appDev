@@ -44,44 +44,49 @@ export const PageAboutUs = () => {
       <Grid className='bottomBox' item xs={20}>
         <h2 style={{transform: 'translateY(-80%)', textAlign:'center' }}>Meet the Team</h2>
         <Grid container spacing={2} style={{marginLeft:'104px'}}>
+
   <Grid className="person" item xs={3}>
-  <br />
+  <br /> 
+  <img src="/about_teamG.jpg" alt="AboutUsTeam" className="teamPic" />
     <span className='teamName'>
-      Name
+      Jessrey Garrido
       </span>
       <br />
       <span className='teamDesc'>
-     centercentercenter
+     "(Ctrl + C) + (Ctrl + V)"
     </span>
   </Grid>
-  <Grid className="person" item xs={3}>
+  <Grid className="person1" item xs={3}>
   <br />
+  <img src="/about_teamES.png" alt="AboutUsTeam" className="teamPic1" />
     <span className='teamName'>
-      Name
+      Rhadiel Escario
       </span>
       <br />
-      <span className='teamDesc'>
-     centercentercenter
+      <span className='teamDesc1'>
+     "God is Good"
     </span>
   </Grid>
   <Grid className="person" item xs={3}>
     <br />
+    <img src="/about_teamEM.jpg" alt="AboutUsTeam" className="teamPic2" />
     <span className='teamName'>
-      Name
+      Reina Empleo
       </span>
       <br />
-      <span className='teamDesc'>
-     centercentercenter
+      <span className='teamDesc2'>
+     "The horrors persist, but so do I"
     </span>
   </Grid>
   <Grid className="person" item xs={3}>
     <br />
+    <img src="/about_teamM.png" alt="AboutUsTeam" className="teamPic2" />
     <span className='teamName'>
-      Name
+      Tracy Martinez
       </span>
       <br />
-      <span className='teamDesc'>
-     centercentercenter
+      <span className='teamDesc3'>
+      “Sometimes you win, sometimes you learn”
     </span>
   </Grid>
 </Grid>
