@@ -56,7 +56,7 @@
     background-color: rgb(252, 242, 193);
     align-items: center;
     transform: translateY(20%);
-    height: 35vh;
+    height: 38vh;
     width: 90%;
     padding: 2%;
     border-radius: 20px;
@@ -69,8 +69,8 @@
   .teamName{
     text-align: center;
     justify-content: center;
-    margin-left: 40px;
-    margin-top: 80px;
+    margin-left: 20px;
+    margin-top: 5px;
     font-size: 18px;
     font-weight: bold;
   }
@@ -78,5 +78,57 @@
     text-align: justify;
     font-size: 16px;
     align-items: center;
-    transform: translateY(35%);
+    display: block;
+    margin: auto;
+    transform: translate(-15%, -23%);
+  }
+  .person1{
+    text-align: justify;
+    font-size: 16px;
+    align-items: center;
+    display: block;
+    margin: auto;
+    transform: translate(-25%, -23%);
+  }
+  .teamPic{
+    border-radius: 80px;
+    width: 43%;
+    height: auto;
+    display: flex;
+    margin-left: 18px;
+    transform: translateY(-10%);
+  }
+  .teamPic1{
+    border-radius: 80px;
+    width: 42%;
+    height: auto;
+    display: flex;
+    margin-left: 20px;
+    transform: translateY(-10%);
+  }
+  .teamPic2{
+    border-radius: 80px;
+    width: 42%;
+    height: auto;
+    display: flex;
+    margin-left: 10px;
+    transform: translateY(-09%);
+  }
+  .teamDesc1{
+    text-align: center;
+    font-style: italic;
+    margin-top: 80px;
+    margin-left: 32px;
+  }  
+  .teamDesc2{
+    text-align: center;
+    font-style: italic;
+    margin-top: 80px;
+    margin-left: -35px;
+  }  
+  .teamDesc3{
+    text-align: center;
+    font-style: italic;
+    margin-top: 80px;
+    margin-left: -65px;
   }
