@@ -18,12 +18,12 @@ export const PageServices = () =>{
             <div className='clinicOuterRectangle' >
                 <Grid className='clinicInnerRectangle' container>
                     <Grid className='btnContainers'item xs={4}>
-                        <Link to="/services/primary-consultation">
+                        <Link to="/services/primary-and-specialty-consultation">
                             <button className='btnService'><img className='logoService' src='../medLogo1.png' alt='MedServButton'/></button>
                         </Link>
                     </Grid>
                     <Grid className='btnContainers' item xs={4}>
-                    <Link to="/services/online-consultation">
+                    <Link to="/appointments">
                             <button className='btnService'><img className='logoService' src='../medLogo3.png' alt='MedServButton'/></button>
                         </Link>
                     </Grid>
@@ -48,7 +48,7 @@ export const PageServices = () =>{
                         {/* bottom half */}
                     <Grid container>
                         <Grid className='btnContainers' item xs={6} style={{paddingLeft:'18%', maxHeight:'100px'}}>
-                            <Link to="/services/medical-service">
+                            <Link to="/appointments">
                                 <button className='btnService'><img className='logoService' src='../medLogo4.png' alt='MedServButton'/></button>
                             </Link>
                         </Grid>
