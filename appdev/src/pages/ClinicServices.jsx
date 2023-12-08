@@ -18,12 +18,12 @@ export const PageServices = () =>{
             <div className='clinicOuterRectangle' >
                 <Grid className='clinicInnerRectangle' container>
                     <Grid className='btnContainers'item xs={4}>
-                        <Link to="/appointments">
+                        <Link to="/services/primary-consultation">
                             <button className='btnService'><img className='logoService' src='../medLogo1.png' alt='MedServButton'/></button>
                         </Link>
                     </Grid>
                     <Grid className='btnContainers' item xs={4}>
-                        <Link to="/appointments">
+                    <Link to="/services/online-consultation">
                             <button className='btnService'><img className='logoService' src='../medLogo3.png' alt='MedServButton'/></button>
                         </Link>
                     </Grid>

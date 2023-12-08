@@ -22,6 +22,7 @@ import { PriAndSpe } from './pages/PriAndSpe';
 import { ThePassword } from './pages/ForgotPassword';
 import { MedstaffViewSpecific } from './pages/MedstaffViewSelectedBooking';
 import { MedStaffModifySpecific } from './pages/MedStaffModifySpecific';
+import { PageContactUs } from './pages/ContactUs';
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <Route index element={<Home/>} path='/'/>
         <Route index element={<PageAboutUs/>} path='/aboutus'/>
         <Route index element={<PageServices/>} path='/services'/>
+        <Route index element={<PageContactUs/>} path='/contact'/>
         
 
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
@@ -82,6 +84,7 @@ function App() {
         <Route index element={<MedstaffViewBookings/>} path='/medstaff/view-all-bookings'/>
         <Route index element={<MedstaffViewSpecific/>} path='/medstaff/view-specific-booking/:aid'/>
         <Route index element={<MedStaffModifySpecific/>} path='/medstaff/modify-appointment/:aid'/>
+        
       </Routes>
       
     </>
