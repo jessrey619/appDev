@@ -52,11 +52,12 @@ function App() {
         <Route index element={<PageAboutUs/>} path='/aboutus'/>
         <Route index element={<PageServices/>} path='/services'/>
         <Route index element={<PageContactUs/>} path='/contact'/>
+        <Route index element={<ThePassword/>}path='/appointments/forgot-password'/>
         
 
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<Onsite/>}path='/services/on-site-medical-services'/>
-        <Route index element={<ThePassword/>}path='/appointments/forgot-password'/>
+        
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<PriAndSpe/>}path='/services/primary-and-specialty-consultation'/>
         
