@@ -109,6 +109,9 @@ export const ProfilePage = (props) => {
                         <h3 style={{margin: '0 auto', marginTop:'10px'}}>BOOKED APPOINTMENTS</h3>
                         <hr className="hr"/>
                         
+                        <div style={{overflow:'scroll', height:'60px'}}>
+
+                        
                         {/* COUNTS THE NUMBER OF BOOKINGS THERE ARE AND IF THERE ARE NONE THEN IT WILL PRINT OUT NO APP*/}
                         {appointments.filter(appointment => appointment.status === true && appointment.delete !== true).length === 0 && (
                             <p style={{ fontStyle: 'italic' }}>No Appointment Bookings</p>
@@ -133,10 +136,10 @@ export const ProfilePage = (props) => {
                             return null;
                             })}
                         
-    
+                        </div>
                     </div>
                     <div className="profileSpaceBtnBookAppointments">
-                        <Button style={{color:'black', backgroundColor:'rgb(254,216,57)', border:'1px solid', paddingTop:'15%', paddingBottom:'15%', borderRadius:'10px'}}
+                        <Button style={{color:'black', backgroundColor:'rgb(254,216,57)', border:'1px solid', paddingTop:'15%', paddingBottom:'15%', borderRadius:'10px', boxShadow:'3px 3px 5px 1px black'}}
                             onClick={handleBookAppointment}>Book Appointment</Button>
                     </div>
                 </div>
