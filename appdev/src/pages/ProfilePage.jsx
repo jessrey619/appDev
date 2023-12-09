@@ -1,14 +1,13 @@
-import { Button, Grid, Input } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import '../css/profilePage.css'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const ProfilePage = (props) => {
-    const [appointments, setAppointments] = useState([{}]);
+    const [appointments, setAppointments] = useState([]);
     const nav = useNavigate();
     const patient = props.patient;
-
 
     const handleBookAppointment = () => {
         // need to add Profile SHit
@@ -109,28 +108,31 @@ export const ProfilePage = (props) => {
                     <div className="profileBookedAppointments">
                         <h3 style={{margin: '0 auto', marginTop:'10px'}}>BOOKED APPOINTMENTS</h3>
                         <hr className="hr"/>
-                        {"TO BE PUT THE APPOINTMENT LISTING"}
-                        {appointments.map((appointment) => {
-                        // Check if appointment.status is true
-                        if (appointment.status === true) {
-                            return (
-                            <button className='appListLinkToAppointment'
-                            style={{width: '90%'}}
-                                onClick={()=>{handleClickAppointment(appointment.aip)}}
-                                >
-                            <div key={appointment.id} className='appListItem' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <div className='appListTxtForDate' style={{ marginRight: '10px', width: '20%' }}>{appointment.date}</div>
-                                <div className='appListTxtForDate' style={{ marginRight: '10px', width: '20%' }}>{appointment.time}</div>
-                                <div className='appListTxtForDate' style={{  marginRight: '10px',width: '20%' }}>{appointment.servtype}</div>
-                                <div className='appListTxtForDate2' style={{ textAlign: 'center', width: '35%' }}>{appointment.staffName}</div>
-                            </div>
-                        </button>
                         
-                            );
-                        }
-                        // If appointment.status is false, don't render anything
-                        return null;
-                        })}
+                        {/* COUNTS THE NUMBER OF BOOKINGS THERE ARE AND IF THERE ARE NONE THEN IT WILL PRINT OUT NO APP*/}
+                        {appointments.filter(appointment => appointment.status === true && appointment.delete !== true).length === 0 && (
+                            <p style={{ fontStyle: 'italic' }}>No Appointment Bookings</p>
+                            )}
+
+                        {/* PRINTS THE BOOKINGS */}
+                            {appointments.map((appointment) => {
+                            // Check if appointment.status is true
+                            if (appointment.status === true && appointment.delete !== true) {
+                                return (
+                                <button className='appListLinkToAppointment' key={appointment.id} style={{ width: '90%' }} onClick={() => { handleClickAppointment(appointment.aip) }}>
+                                    <div key={appointment.id} className='appListItem' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div className='appListTxtForDate' style={{ marginRight: '10px', width: '20%' }}>{appointment.date}</div>
+                                    <div className='appListTxtForDate' style={{ marginRight: '10px', width: '20%' }}>{appointment.time}</div>
+                                    <div className='appListTxtForDate' style={{ marginRight: '10px', width: '20%' }}>{appointment.servtype}</div>
+                                    <div className='appListTxtForDate2' style={{ textAlign: 'center', width: '35%' }}>{appointment.staffName}</div>
+                                    </div>
+                                </button>
+                                );
+                            }
+                            // If appointment.status is false or delete is true, don't render anything
+                            return null;
+                            })}
+                        
     
                     </div>
                     <div className="profileSpaceBtnBookAppointments">
