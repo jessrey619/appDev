@@ -21,7 +21,7 @@ export const PageContactUs = () => {
   const outerGridStyle = {
     width: '300px', // Adjust the width as needed
     height:'100%',
-    marginTop: '5%'
+    marginTop: '7%'
   };
 
   const innerPaperStyle = {
@@ -82,7 +82,7 @@ export const PageContactUs = () => {
           <Grid elevation={3} style={innerPaperStyle}>
             <div style={yellowRectangleStyle}>
             {/* <img src={require('../email.png')} style={imageStyle} alt="Email Icon" /> */}
-            <div style={{padding:'20px'}}>
+            <div style={{padding:'10px'}}>
               <img src={process.env.PUBLIC_URL + '/email.png'} style={imageStyle} alt="Email Icon" />
                 <Typography variant="h6">Contact Us</Typography>
                 <Typography variant="body1">

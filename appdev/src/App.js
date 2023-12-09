@@ -57,8 +57,6 @@ function App() {
 
         <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<Onsite/>}path='/services/on-site-medical-services'/>
-        
-        <Route index element={<LabAndDiag/>}path='/services/laboratory-and-diagnostics'/>
         <Route index element={<PriAndSpe/>}path='/services/primary-and-specialty-consultation'/>
         
         <Route index element={<PageServices/>} path='/services'/>

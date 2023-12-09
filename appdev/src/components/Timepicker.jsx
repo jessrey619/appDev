@@ -50,7 +50,7 @@ export default function TimePickerValue(props) {
         getOpenDialogAriaText={getOpenDialogAriaText}
         openTo="minutes"
         minutesStep={minutesStep}
-        minTime={dayjs().set('hour', 8).set('minute', 30)} // Set minimum time to 8:30 AM
+        minTime={dayjs().set('hour', 7).set('minute', 30)} // Set minimum time to 8:30 AM
         maxTime={dayjs().set('hour', 17).set('minute', 0)} // Set maximum time to 5:00 PM
         open={open}
         onOpen={handleOpenDialog}
