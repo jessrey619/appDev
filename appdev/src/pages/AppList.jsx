@@ -98,16 +98,14 @@ export const AppViewList = (props) => {
                   // Check if appointment.status is true
                   if (appointment.status === true) {
                     return (
-                      <button key={appointment.id} className='appListLinkToAppointment'
-                        onClick={()=>{handleClickAppointment(appointment.aip)}}>
-                      <div key={appointment.id} className='appListItem' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <button key={appointment.id} className='appListLinkToAppointment' onClick={() => { handleClickAppointment(appointment.aip) }}>
+                        <div key={appointment.id} className='appListItem' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                           <div className='appListTxtForDate' style={{ marginRight: '10px', width: '20%' }}>{appointment.date}</div>
                           <div className='appListTxtForDate' style={{ marginRight: '10px', width: '20%' }}>{appointment.time}</div>
-                          <div className='appListTxtForDate' style={{  marginRight: '10px',width: '20%' }}>{appointment.servtype}</div>
+                          <div className='appListTxtForDate' style={{ marginRight: '10px', width: '20%' }}>{appointment.servtype}</div>
                           <div className='appListTxtForDate2' style={{ textAlign: 'center', width: '35%' }}>{appointment.staffName}</div>
-                      </div>
-                  </button>
-                  
+                        </div>
+                      </button>
                     );
                   }
                   // If appointment.status is false, don't render anything

@@ -29,15 +29,27 @@ export const ThePassword = () => {
     setError(null); // Clear any previous errors
   };
 
+  const isPasswordValid = () => {
+    // Password should be at least 8 characters, contain 1 capital letter, and have numbers and special characters
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleUpdatePassword = async () => {
     try {
+      if (!isPasswordValid()) {
+        alert("Password must be at least 8 characters, contain 1 capital letter, and have numbers and special characters.");
+        setError("Password must be at least 8 characters, contain 1 capital letter, and have numbers and special characters.");
+        return;
+      }
+
       const response = await axios.put(`http://localhost:8080/stud/updatePassword/${username}`, {
         newPassword: password,
       });
       console.log('Password updated successfully:', response.data);
       window.alert('Password updated successfully');
 
-    // Optionally, you can reset the form or clear the inputs
+      // Optionally, you can reset the form or clear the inputs
       handleClearEntries();
       // Optionally, provide user feedback on success
     } catch (error) {

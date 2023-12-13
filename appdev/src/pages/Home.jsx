@@ -11,10 +11,11 @@ export const Home = () => {
     <div className="pageServicesBody">
    
       <img
-        src="/sht.png"
+        src="/homegif.gif"
         alt="Clinic"
         className="clinicImage"
-        style={{ maxWidth: '100%', height: 'auto' }}
+        style={{ width: '90%', maxHeight: '400px'}}
+
       />
 
       <span className="servicesDescription" style={{ textAlign: 'center', marginTop: '3%', marginBottom:'2%', fontWeight:'bold', fontSize:'40'}}>

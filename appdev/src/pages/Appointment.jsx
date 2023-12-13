@@ -104,8 +104,8 @@ export const TheAppointment = (props) => {
             <br /><br />
             <div className="forgotPassword">
               <span className="forgotPass">Forgot your password? </span>
-              <Link to="/appointments/forgot-password">
-                <a href="forgot-password" className="btnClickHere">Click here</a>
+              <Link to="/appointments/forgot-password" className="btnClickHere">
+                  Click Here
               </Link>
             </div>
           </div>

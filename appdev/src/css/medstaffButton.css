@@ -1,0 +1,16 @@
+
+
+.add {
+    background-color: rgb(232, 247, 118);
+    color: black;
+}
+
+.edit {
+    background-color: rgb(130, 139, 65);
+    color: white;
+}
+
+.confirm {
+    background-color: rgb(96, 143, 4);
+    color: white;
+}

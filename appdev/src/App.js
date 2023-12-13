@@ -23,6 +23,9 @@ import { ThePassword } from './pages/ForgotPassword';
 import { MedstaffViewSpecific } from './pages/MedstaffViewSelectedBooking';
 import { MedStaffModifySpecific } from './pages/MedStaffModifySpecific';
 import { PageContactUs } from './pages/ContactUs';
+import { MedstaffAddMedRecord } from './pages/MedStaffAddMedrecord';
+import { MedstaffAddDiag } from './pages/MedstaffAddDiagnosisPerMedRecord';
+import { MedstaffDisableService } from './pages/MedstaffDisableService';
 
 
 
@@ -83,7 +86,9 @@ function App() {
         <Route index element={<MedstaffViewBookings/>} path='/medstaff/view-all-bookings'/>
         <Route index element={<MedstaffViewSpecific/>} path='/medstaff/view-specific-booking/:aid'/>
         <Route index element={<MedStaffModifySpecific/>} path='/medstaff/modify-appointment/:aid'/>
-        
+        <Route index element={<MedstaffAddMedRecord/>} path='/medstaff/add-medrecord'/>
+        <Route index element={<MedstaffAddDiag/>} path='/medstaff/add-diagnosis'/>
+        <Route index element={<MedstaffDisableService/>} path='/medstaff/disable-service'/>
       </Routes>
       
     </>
