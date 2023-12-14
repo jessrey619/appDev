@@ -137,6 +137,7 @@ export const ProfilePage = (props) => {
                             })}
                         
                         </div>
+
                     </div>
                     <div className="profileSpaceBtnBookAppointments">
                         <Button style={{color:'black', backgroundColor:'rgb(254,216,57)', border:'1px solid', paddingTop:'15%', paddingBottom:'15%', borderRadius:'10px', boxShadow:'3px 3px 5px 1px black'}}
