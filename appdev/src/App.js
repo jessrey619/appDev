@@ -26,6 +26,7 @@ import { PageContactUs } from './pages/ContactUs';
 import { MedstaffAddMedRecord } from './pages/MedStaffAddMedrecord';
 import { MedstaffAddDiag } from './pages/MedstaffAddDiagnosisPerMedRecord';
 import { MedstaffDisableService } from './pages/MedstaffDisableService';
+import TheFooter from './components/footer';
 
 
 
@@ -90,7 +91,7 @@ function App() {
         <Route index element={<MedstaffAddDiag/>} path='/medstaff/add-diagnosis'/>
         <Route index element={<MedstaffDisableService/>} path='/medstaff/disable-service'/>
       </Routes>
-      
+      <TheFooter/>
     </>
     
   );
