@@ -7,39 +7,33 @@ import DatePickerValue from '../components/DatePicker';
 import TimePickerValue from '../components/Timepicker';
 import '../css/appBooking.css';
 import { useNavigate } from 'react-router-dom';
+import ConfirmationModal from '../components/ModalBookingConfirmation';
+import SuccessModal from '../components/ModalBookingSuccessful';
 
 export const AppModifySpecific = (props) => {
     const aip = useParams();
     const name = `${props.patient.fname} ${props.patient.lname}`;
-    const [appointment, setAppointment] = useState({});
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [service, setService] = useState(null);
     const [compareDate, setCompareDate] = useState('');
+    const [isModifyConfirmationOpen, setModifyConfirmationOpen] = useState(false);
+    const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
 
+    
+    const handleOpenModifyConfirmation = () => {
+      setModifyConfirmationOpen(true);
+    };
 
-
-    // useEffect(()=>{
-    //     // get the value of the appointment using the aip value 
-    //     console.log(`NIGGA: ${props.patient.sid}`)
-    //     axios.post(`http://localhost:8080/appointment/getChosenAppointment/${aip.aip}`)
-    //         .then(response => {
-    //             if (!(response.status === 200)) {
-    //             console.error(response.statusText);
-    //             throw new Error('Network response was not ok');
-    //             }
-    //             return response.data; // Extract the data from the response
-    //         })
-    //         .then(data => {
-    //             setAppointment(data);
-    //             console.log(`Data: ${data}`)
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching appointments:', error);
-    //         });
-    // }, []);
-
-
+    const handleSuccessModalOpen = () => {
+      setSuccessModalOpen(true);
+    };
+  
+    const handleSuccessModalClose = () => {
+      setSuccessModalOpen(false);
+      navigate('/appointments/view-appointments');
+    };
+  
   const handleDate = (dateData) => {
     setCompareDate(dateData);
     setDate(dateData.format("MMM DD, YYYY"));
@@ -91,10 +85,7 @@ export const AppModifySpecific = (props) => {
       }
   
       // Ask for confirmation before submitting
-      const userConfirmed = window.confirm("Confirm Update with Current Inputted Data?");
-      if (!userConfirmed) {
-        return;
-      } else {
+      else {
         await axios.put(`http://localhost:8080/appointment/updateAppointment?aid=${aip.aip}`, {
           date: date,
           time: time,
@@ -109,10 +100,10 @@ export const AppModifySpecific = (props) => {
           },
         }).then(() => {
           
-          alert("Modification Successful Waiting for Confirmation");
+          setSuccessModalOpen(true);
   
           // Change the URL after successful submission
-          navigate('/appointments/view-appointments');
+          
         });
       }
   
@@ -187,8 +178,24 @@ export const AppModifySpecific = (props) => {
                   <br />
                   <Button
                       style={{ color: 'black', backgroundColor: 'rgb(223, 190, 57)', width: '100px', boxShadow: '2px 2px 2px 0px' }}
-                      onClick={submitBooking}
+                      onClick={handleOpenModifyConfirmation}
                   >Submit</Button>
+                  <ConfirmationModal
+                    open={isModifyConfirmationOpen}
+                    onClose={() => setModifyConfirmationOpen(false)}
+                    onConfirm={() => {
+                      submitBooking();
+                      console.log('User confirmed modification');
+                      setModifyConfirmationOpen(false);
+                      handleSuccessModalOpen()
+                    }}
+                    type="modify2"
+                  />
+                  <SuccessModal
+                    open={isSuccessModalOpen}
+                    onClose={handleSuccessModalClose}
+                    type="modifySuccess"
+                  />
                   <br /><br />
                   </div>
               </div>

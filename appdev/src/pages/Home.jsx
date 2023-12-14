@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Typography} from '@mui/material';
 import '../css/home.css';
-import { light } from '@mui/material/styles/createPalette';
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material'
 

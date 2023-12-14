@@ -3,33 +3,33 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '../css/appBooking.css';
+import ConfirmationModal from '../components/ModalBookingConfirmation';
 
 export const AppViewSpecific = (props) => {
   const [appointments, setAppointments] = useState([]);
-  const yes = useParams();
-  
+  const [isModifyConfirmationOpen, setModifyConfirmationOpen] = useState(false);
+  const [isCancelConfirmationOpen, setCancelConfirmationOpen] = useState(false);
   const location = useLocation();
   const patientId = location.state?.pid;
+  const yes = useParams();
 
   useEffect(() => {
-    
     axios.post(`http://localhost:8080/appointment/getChosenAppointment/${yes.aip}`)
       .then(response => {
         if (!(response.status === 200)) {
           console.error(response.statusText);
           throw new Error('Network response was not ok');
         }
-        
-        return response.data; // Extract the data from the response
-      }).then(data => {
+        return response.data;
+      })
+      .then(data => {
         setAppointments(data);
       })
       .catch(error => {
         console.error('Error fetching appointment:', error);
       });
-    console.log(appointments)
   }, [yes]);
-  
+
   const inactiveButton = {
     color: 'black',
     backgroundColor: 'rgb(190, 162, 44)',
@@ -46,30 +46,22 @@ export const AppViewSpecific = (props) => {
   };
   const navigate = useNavigate();
 
-  const handleModifyBtn = () => {
-    // Display a confirmation dialog
-    const userConfirmed = window.confirm("Are you sure you want to continue with this action?");
-    
-    // Check if the user clicked OK
-    if (userConfirmed) {
-      // User confirmed, proceed with the action
-      // ... Your action logic here
-      
-      navigate(`/appointments/modify-appointment/${appointments.aip}`);
-      console.log("Action confirmed and executed");
-    } else {
-      // User canceled the action
-      console.log("Action canceled");
-    }
+  const handleOpenModifyConfirmation = () => {
+    setModifyConfirmationOpen(true);
   };
-  
+
+  const handleOpenCancelConfirmation = () =>{
+    setCancelConfirmationOpen(true);
+  }
+
+  const handleModifyBtn = () => {
+    navigate(`/appointments/modify-appointment/${appointments.aip}`);
+    console.log("Action confirmed and executed");
+  };
 
   const handleCancelBtn = (appointment)=> {
     // Display a confirmation dialog
-    const isConfirmed = window.confirm('Are you sure you want to cancel this booking?');
     
-    // Check if the user confirmed
-    if (isConfirmed) {
         axios.put(`http://localhost:8080/appointment/updateAppointment?aid=${appointment.aip}`, {
             // Include the parameters you want to send in the request body
             aid: appointment.aip,
@@ -83,38 +75,29 @@ export const AppViewSpecific = (props) => {
         .then(response => {
             console.log(response);
             alert('Booking Cancelled');
-            nav('/appointments/view-appointments' , { state: { pid: patientId }})
+            navigate('/appointments/view-appointments' , { state: { pid: patientId }})
         })
         .catch(error => {
             console.error('Error updating appointment:', error);
         });
-    } else {
-        // User clicked "Cancel" in the confirmation dialog
-        alert('Booking rejection canceled');
-    }
+    
   }
-
-  const nav = useNavigate();
 
   const handleBookAppointment = () => {
-    nav('/appointments/booking' , { state: { sid: patientId }})
-  }
+    navigate('/appointments/booking', { state: { sid: patientId } });
+  };
 
   const handleViewAppointment = () => {
-    nav('/appointments/view-appointments' , { state: { pid: patientId }})
-  }
-
-
+    navigate('/appointments/view-appointments', { state: { pid: patientId } });
+  };
 
   if (props.loggedIn !== true) {
     alert("You need to log in to access this page");
     setTimeout(() => {
       // Navigate to the login page or any other desired route
-      nav('/appointments');
+      navigate('/appointments');
     }, 0);
-  }
-
-  else{
+  } else {
     return (
       <div className="appBookBg">
         <div className="sideNav">
@@ -128,51 +111,80 @@ export const AppViewSpecific = (props) => {
           <div className="appViewSelectOutsideOuterSquare">
             <div className="appViewSelectOutSquare">
               <Link to="/appointments/view-appointments">
-                <img src='/appViewSelectBtnBack.png' style={{width:'15px', marginLeft:'30px'}}></img>
+                <img src='/appViewSelectBtnBack.png' style={{ width: '15px', marginLeft: '30px' }}></img>
               </Link>
               <span className='appViewSelectHeader'>{appointments.servtype} (Booked)</span>
               <div className='appViewSelectInSquare'>
-                  <div className='appViewSelectLeftSquare'>
+                <div className='appViewSelectLeftSquare'>
                   <h1>Your Booking</h1>
-                      <div className='appViewSelectBoxForContent'>
-                          <div className='appViewSelectContentContainer'>
-                              <img className='appViewSelectIcons' src="/clockIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.time}</div>
-                          </div>
-                          <div className='appViewSelectContentContainer'>
-                              <img className='appViewSelectIcons' src="/calendarIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.date}</div>
-                          </div>
-                          <div className='appViewSelectContentContainer'>
-                              <img className='appViewSelectIcons' src="/serviceIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.servtype}</div>
-                          </div>
-                          <div className='appViewSelectContentContainer'>
-                              <img className='appViewSelectIcons' src="/medstaffIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.staffName}</div>
-                          </div>
-                          
-                      </div>
-                      <div className='appViewSelectReminders'>
-                          Please arrive 5 minutes earlier.
-                      </div>
-                      <div className='appViewSelectReminders2'>
-                          Feel free to make any changes that work for you; we'll be informed!
-                      </div>
+                  <div className='appViewSelectBoxForContent'>
+                    <div className='appViewSelectContentContainer'>
+                      <img className='appViewSelectIcons' src="/clockIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.time}</div>
+                    </div>
+                    <div className='appViewSelectContentContainer'>
+                      <img className='appViewSelectIcons' src="/calendarIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.date}</div>
+                    </div>
+                    <div className='appViewSelectContentContainer'>
+                      <img className='appViewSelectIcons' src="/serviceIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.servtype}</div>
+                    </div>
+                    <div className='appViewSelectContentContainer'>
+                      <img className='appViewSelectIcons' src="/medstaffIcon.png" alt="" /> <div className='appViewSelectContent'>{appointments.staffName}</div>
+                    </div>
                   </div>
-  
-                  <div className='appViewSelectRightSquare'>
-                      <Button className='appViewSelectBtnModify' style={{backgroundColor: 'rgb(223, 190, 58)', marginTop:'6vh', color: 'black'}}
-                        onClick={handleModifyBtn}>Modify</Button><br/>
-                      <Button className='appViewSelectBtnCancel' style={{backgroundColor: 'rgb(137, 56, 52)', marginTop:'3vh', color: 'white', marginBottom:'3vh'}}  
-                        onClick={()=>{handleCancelBtn(appointments)}}>Cancel</Button>
-  
-                      <img className='appViewSelectImg' src='/viewAppointmentSpecific.png' alt='appSpecificPic'></img>
+                  <div className='appViewSelectReminders'>
+                    Please arrive 5 minutes earlier.
                   </div>
+                  <div className='appViewSelectReminders2'>
+                    Feel free to make any changes that work for you we'll be informed!
+                  </div>
+                </div>
+                <div className='appViewSelectRightSquare'>
+                  <Button
+                    className='appViewSelectBtnModify'
+                    style={{ backgroundColor: 'rgb(223, 190, 58)', marginTop: '6vh', color: 'black' }}
+                    onClick={handleOpenModifyConfirmation}
+                  >
+                    Modify
+                  </Button><br />
+                  <ConfirmationModal
+                    open={isModifyConfirmationOpen}
+                    onClose={() => setModifyConfirmationOpen(false)}
+                    onConfirm={() => {
+                      handleModifyBtn();
+                      console.log('User confirmed modification');
+                      setModifyConfirmationOpen(false);
+                    }}
+                    type="modify"
+                  />
+
+                  <Button
+                    className='appViewSelectBtnCancel'
+                    style={{ backgroundColor: 'rgb(137, 56, 52)', marginTop: '3vh', color: 'white', marginBottom: '3vh' }}
+                    onClick={handleOpenCancelConfirmation}
+                  >
+                    Cancel
+                  </Button>
+                  <ConfirmationModal
+                    open={isCancelConfirmationOpen}
+                    onClose={() => setCancelConfirmationOpen(false)}
+                    onConfirm={() => {
+                      handleCancelBtn(appointments);
+                      console.log('User confirmed cancellation');
+                      setCancelConfirmationOpen(false);
+                    }}
+                    type="cancel"
+                  />
+                  
+
+                  
+
+                  <img className='appViewSelectImg' src='/viewAppointmentSpecific.png' alt='appSpecificPic'></img>
+                </div>
               </div>
-  
             </div>
           </div>
         </div>
       </div>
     );
   }
-
-  
 };
